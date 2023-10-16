@@ -1,7 +1,7 @@
 #include "Tablero.h"
 
 Tablero::Tablero(unsigned int ancho, unsigned int alto, unsigned int largo) {
-    validarRango(ancho, alto, largo);
+    validarCoordenadas(ancho, alto, largo);
 
 	this->casilleros = new Lista<Lista<Lista<Casillero *> *> *>();
     this->ancho = ancho;
@@ -53,10 +53,11 @@ unsigned int Tablero::getLargo() {
 }
 
 Casillero * Tablero::getCasillero(unsigned int ancho, unsigned int alto, unsigned int largo) {
+    validarCoordenadas(ancho, alto, largo);
 	return this->casilleros->obtener(ancho)->obtener(alto)->obtener(largo);
 }
 
-void Tablero::validarRango(unsigned int ancho, unsigned int alto, unsigned int largo){
+void Tablero::validarCoordenadas(unsigned int ancho, unsigned int alto, unsigned int largo){
     if(ancho < 1){
         throw "El ancho debe ser mayor igual a 0";
     }
@@ -76,5 +77,4 @@ void Tablero::validarRango(unsigned int ancho, unsigned int alto, unsigned int l
         throw "El largo debe ser menor igual a " + this->getLargo();
     }
 }
-
 
