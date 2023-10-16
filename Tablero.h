@@ -47,7 +47,9 @@ public:
     /*
     pos: si los valores no estan en rango, tira una excepcion
     */
-    void validarRango(unsigned int ancho, unsigned int alto, unsigned int largo);
+    void validarCoordenadas(unsigned int ancho, unsigned int alto, unsigned int largo);
+
 };
 
 #endif /* TABLERO_H_ */
+
