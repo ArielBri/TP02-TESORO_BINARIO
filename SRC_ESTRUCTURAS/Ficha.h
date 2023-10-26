@@ -2,9 +2,9 @@
 #define FICHA_H_
 
 enum TipoDeFicha{
-    BLANCO,
     TESORO,
-    VACIA
+    ESPIA,
+    MINA
 };
 
 class Ficha {
