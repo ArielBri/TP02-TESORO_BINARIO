@@ -3,16 +3,19 @@
 
 #include "Mazo.h"
 
-class Jugador {
-private:
-    Lista<Carta*>* cartasJugador;
-public:
-    Jugador();
-    void obtenerCarta(Mazo* mazo);
-    void jugarCarta(Carta* carta);
-    ~Jugador();
-
-};
+class Jugador{
+    private:
+        int idJugador;
+        Lista<Carta*>* cartasDelJugador;
+        int cantCartasDelJugador;
+    public:
+        Jugador(int numeroJugador);
+        ~Jugador();
+        int mostrarJugador();
+        void obtenerCarta(Mazo* mazo);
+        void jugarCarta(int posicion);
+        void mostrarCartas();
+    }; 
 
 
 #endif
