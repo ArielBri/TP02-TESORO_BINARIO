@@ -1,38 +1,38 @@
+/*
+ * Ficha.h
+ *
+ *  Created on: 12/09/2023
+ *      Author: algo2
+ */
+
 #ifndef FICHA_H_
 #define FICHA_H_
+#include <iostream>
+#include "Jugador.h"
 
-enum TipoDeFicha{
-    TESORO,
-    ESPIA,
-    MINA
+enum TipoFicha{
+	Tesoro,
+	Espia,
+	TesoroMina,
+	TesoroBlindado
 };
 
 class Ficha {
+
 private:
-    TipoDeFicha ficha;
-    Jugador* jugador;
-    
+	TipoFicha tipo;
+	Jugador * jugador;
+	int turnosRestantesBlindaje;
+
 public:
-    /**
-	 * pre: se le pasa un tipo de ficha y un puntero a jugador para crear, cuando se da de alta el mapa ya se crea con tipo BLANCO y jugador en NULL
-	 * pos: crea una ficha
-	 */
-    Ficha(TipoDeFicha ficha, Jugador* jugador);
-
-    /**
-	 * pos: elimina la ficha
-	 */
-    virtual ~Ficha();
-
-    /**
-	 * pos: devuelve el tipo de ficha como enum 
-	 */
-    TipoDeFicha getFicha();
-
-    /**
-	 * pos: Devuelve el jugador
-	 */
-    Jugador* getJugador();
+	Ficha(TipoFicha tipo, Jugador* jugador);
+	TipoFicha getTipo();
+	void setTipo(TipoFicha tipo);
+	Jugador* getJugador();
+	void setJugador(Jugador* jugador);
+	void blindarTesoro();
+	void restarContadorBlindaje();
+	virtual ~Ficha();
 };
 
 #endif /* FICHA_H_ */
