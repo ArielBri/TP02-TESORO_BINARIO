@@ -2,7 +2,7 @@
 #define TP_2_JUGADOR_H
 
 #include "../Mazo/Mazo.h"
-#include "../Ficha/Ficha.h"
+
 enum estadoJugador{
     noGano,
     gano,
