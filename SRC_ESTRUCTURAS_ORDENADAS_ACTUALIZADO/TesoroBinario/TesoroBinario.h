@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include "../Tablero/Tablero.h"
-#include "../Mazo/Mazo.h"
 #include "../Jugador/Jugador.h"
 
 
