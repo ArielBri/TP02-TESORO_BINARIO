@@ -1,21 +1,38 @@
 #include "TesoroBinario.h"
 // TERMINAR DE CODEAR
 // crea la lista de jugadores  segun la cantidad
-Lista<Jugador*>* TesoroBinario::crearListaDeJugadores(int cantidadDeJugadores) {
+
+/*Lista<Jugador*>* TesoroBinario::crearListaDeJugadores(int cantidadDeJugadores) {
     Lista<Jugador*>* lista;
     return lista;
+}*/
+void TesoroBinario::crearListaDeJugadores(int cantidadDeJugadores,int cantidadDeTesoros) {
+	this->listaDeJugadores = new Lista<Jugador*>();
+	for (unsigned int i = 1; i <= cantidadDeJugadores; i++) {
+		Jugador* jugador = new Jugador(i, cantidadDeTesoros);
+		listaDeJugadores->add(jugador);
+	}
 }
 
-TesoroBinario::TesoroBinario(int ancho, int alto, int largo, int cantidadDeJugadores) {
+TesoroBinario::TesoroBinario(int ancho, int alto, int largo, int cantidadDeJugadores, int cantidadDeTesoros) { //TesoroBinario::TesoroBinario(int ancho, int alto, int largo, int cantidadDeJugadores) {
     this->tablero= new Tablero(ancho, alto, largo);
-    this->listaDeJugadores = crearListaDeJugadores(cantidadDeJugadores);
+    /*this->listaDeJugadores =*/ crearListaDeJugadores(cantidadDeJugadores);
     this->jugadorActual = NULL;
     this->mazo = new Mazo(CANTIDAD_DE_CARTAS_INICIAL);
 }
 
 
-bool TesoroBinario::jugadorTieneAlMenosUnTesoro(Jugador *jugadorActual) {
-    this->tablero->reiniciarCursor();
+bool TesoroBinario::jugadorTieneAlMenosUnTesoro(/*Jugador *jugadorActual*/) {
+    bool quedanTesoros = false;
+	this->listaDeJugadores->reiniciarCursor();
+	while (this->listaDeJugadores->avanzarCursor()){
+		Jugador* jugador = this->listaDeJugadores->getCursor();
+		if (jugador->devolverCantidadDeTesoros()>1){
+			quedanTesoros = true;
+		}
+	}
+    return quedanTesoros;
+    /*this->tablero->reiniciarCursor();
     while (this->tablero->avanzar){
         Casillero* casillero = this->tablero->getCursor();
 
@@ -26,10 +43,11 @@ bool TesoroBinario::jugadorTieneAlMenosUnTesoro(Jugador *jugadorActual) {
             }
         }
     }
-    return false;
+    return false;*/
 }
 
 bool TesoroBinario::hayGanador(){
+    bool ganador=true;
     int cantidadDeJugadoresConAlmenosUnTesoro=0;
     this->listaDeJugadores->reiniciarCursor();
     while (listaDeJugadores->avanzarCursor()){
@@ -39,11 +57,11 @@ bool TesoroBinario::hayGanador(){
             cantidadDeJugadoresConAlmenosUnTesoro++;
         }
         if(cantidadDeJugadoresConUnTesoro>2){
-            return false;
+            ganador=false;
         }
 
     }
-    return
+    return ganador;
 
 }
 
