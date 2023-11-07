@@ -14,7 +14,7 @@ int main(){
 	Interacciones* interacciones = new Interacciones();
 	int cantidadJugadores = interacciones->solicitarCantidadDeJugadores();
 	int cantidadTesoros = interacciones->solicitarCantidadDeTesoros();
-	int* tamanioDeTablero = interacciones->solicitarTamanioTablero(cantidadJugadores);
+	int* tamanioDeTablero = interacciones->solicitarTamanioTablero();
 	TesoroBinario* tesoroBinario = new TesoroBinario(tamanioDeTablero[0],tamanioDeTablero[1], tamanioDeTablero[2],cantidadJugadores,cantidadTesoros);
 	return 0;
 }
