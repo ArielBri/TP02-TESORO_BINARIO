@@ -1,15 +1,18 @@
 #include "Jugador.h"
 
 Jugador::Jugador(int numeroDeJugador, int cantidadDeTesoros){
-    if(numeroDeJugador<=0){
+    if(numeroDeJugador<=0 || cantidadDeTesoros<=0){
         throw "Numero negativo o cero";
     }
     this->idJugador=numeroDeJugador;
+    this->cantidadDeTesoros = cantidadDeTesoros;
     this->cartasDelJugador= new Lista<Carta*>();
 }
 
 
-
+int Jugador::devolverCantidadDeTesoros(){
+    return this->cantidadDeTesoros;
+}
 int Jugador::devolverJugadorId(){
     return this->idJugador;
 }
