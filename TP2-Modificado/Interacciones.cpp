@@ -1,6 +1,7 @@
 #include "Interacciones.h"
 using namespace std;
-
+/*const int MAXIMO=50;
+const int MINIMO=5;*/
 Interacciones::Interacciones() {
 	// TODO Auto-generated constructor stub
 
@@ -25,26 +26,26 @@ unsigned int Interacciones::solicitarCantidadDeTesoros() {
 	return cantidadDeTesoros;
 }
 
-int* Interacciones::solicitarTamanioTablero(int cantidadDeJugadores) {
-	if (cantidadDeJugadores < 1) {
-		throw "Catindad de jugadores debe ser mayor a 0";
-	}
+int* Interacciones::solicitarTamanioTablero() {
+	/*if (cantidadDeJugadores <= 1) {
+		throw "Cantidad de jugadores debe ser mayor a 0";
+	}*/
 	int* coordenadas = new int [3];
-	cout << "Ingrese el tamaño del tablero: " << endl;
-	coordenadas[0] = validarIngresoEntero(5, "Tamaño ANCHO: ", 50);
-	coordenadas[1] = validarIngresoEntero(5, "Tamaño ALTO: ", 50);
-	coordenadas[2] = validarIngresoEntero(5, "Tamaño LARGO: ", 50);
+	cout << "Ingrese el tamaÃ±o del tablero: " << endl;
+	coordenadas[0] = validarIngresoEntero(5, "TamaÃ±o ANCHO: ", 50);
+	coordenadas[1] = validarIngresoEntero(5, "TamaÃ±o ALTO: ", 50);
+	coordenadas[2] = validarIngresoEntero(5, "TamaÃ±o LARGO: ", 50);
 
 	return coordenadas;
 }
 
-unsigned int Interacciones::validarIngresoEntero(unsigned int maximo, string texto, unsigned int minimo) {
-	/*if (maximo < 1) {
+unsigned int Interacciones::validarIngresoEntero(unsigned int minimo, string texto, unsigned int maximo) {
+	if (maximo < 1) {
 		throw "Tamanio debe ser mayor a 0";
 	}
 	if (minimo < 1) {
 		throw "Minimo debe ser mayor a 0";
-	}*/
+	}
 	unsigned int coordenada;
 	bool incorrecto = true;
 	while (incorrecto){
