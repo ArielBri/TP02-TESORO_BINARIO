@@ -1,49 +1,39 @@
 #ifndef INTERACCIONES_H_
 #define INTERACCIONES_H_
-
-
 #include <iostream>
 
-class Interacciones {
-public:
-
-	/*
-	 * Pre:
-	 * Pos: crear una instancia de interacciones
-	 */
-	Interacciones();
-
-	/*
-	 * Pre:
-	 * Pos: destruye la instancia creada
-	 */
-	virtual ~Interacciones();
-
-	/*
-	 * Pre:
-	 * Pos: Solicita el ingreso de un entero y lo retorna
-	 */
-	unsigned int solicitarCantidadDeJugadores();
-	
-	/*
-	 * Pre:
-	 * Pos: Solicita el ingreso de un entero y lo retorna
-	 */
-	unsigned int solicitarCantidadDeTesoros();
-	
-	/*
-	 * Pre: catidad de jugadores debe ser entero mayor a 0
-	 * Pos: Solicita el ingreso de enteros que seran las coordenadas ancho, alto y largo. Crea array dinamico y le asigna los valores ingresados. Devuelve el puntero al array
-	 * En funcion de la cantidad de jugadores, limita los valores x y z ingresados
-	 */
-	int* solicitarTamanioTablero(int cantidadDeJugadores);
-
-	/*
-	 * Pre: tamanio y minimo deben ser enteros maqyores a 0
-	 * Pos: Pedira el ingreso de un entero hasta que este este en el rango entre minimo y tamanio, luego lo retorna
-	 */
-	unsigned int validarIngresoEntero(unsigned int maximo, std::string texto, unsigned int minimo);
-
+class Interacciones{
+	public:
+		
+		/*
+		 * Pos: Crea una instancia de interacciones
+		 */
+		Interacciones();
+		
+		/*
+		 * Pos: Destruye la instancia creada
+		 */
+		virtual ~Interacciones();
+		
+		/*
+		 * Pos: Devuelve un entero con la cantidad de Jugadores.
+		 */
+		unsigned int solicitarCantidadDeJugadores();
+		
+		/*
+		 * Pos: Devuelve un entero con la cantidad de Tesoros.
+		 */
+		unsigned int solicitarCantidadDeTesoros(); 
+		
+		/*
+		 * Pre: Cantidad de jugadores debe ser un entero mayor a 0.
+		 * Pos: Devuelve un puntero a un array de enteros con las longitudes de ancho, alto y largo.
+		 */
+		int* solicitarTamanioTablero();
+		
+		/*
+		 * Pos: Devuelve un entero valido dentro del rango establecido entre maximo y minimo. 
+		 */
+		unsigned int validarIngresoEntero(unsigned int minimo, std::string texto, unsigned int maximo);
 };
-
-#endif 
+#endif
