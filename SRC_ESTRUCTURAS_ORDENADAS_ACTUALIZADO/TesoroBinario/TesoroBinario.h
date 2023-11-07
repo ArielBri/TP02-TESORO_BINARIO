@@ -4,7 +4,7 @@
 #include <iostream>
 #include "../Tablero/Tablero.h"
 #include "../Jugador/Jugador.h"
-
+#include "../Lista/Lista.h"
 
 class TesoroBinario {
 private:
@@ -12,10 +12,10 @@ private:
     Lista <Jugador*>* listaDeJugadores;
     Jugador * jugadorActual;
     Mazo * mazo;
-    Lista<Jugador*>* crearListaDeJugadores(int cantidadDeJugadores);
+    void crearListaDeJugadores(int cantidadDeJugadores, int cantidadDeTesoros);//Lista<Jugador*>* crearListaDeJugadores(int cantidadDeJugadores);
 public:
     //cantidadDeJugadores*CantidadTesoros<ancho*largo*alto
-    TesoroBinario(int ancho, int alto, int largo, int cantidadDeJugadores);
+    TesoroBinario(int ancho, int alto, int largo, int cantidadDeJugadores, int cantidadDeTesoros);//TesoroBinario(int ancho, int alto, int largo, int cantidadDeJugadores);
     void jugar();
     bool hayGanador();
     void mostrarTablero();
