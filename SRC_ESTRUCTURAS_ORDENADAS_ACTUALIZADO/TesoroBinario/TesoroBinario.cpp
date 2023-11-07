@@ -20,7 +20,8 @@ bool TesoroBinario::jugadorTieneAlMenosUnTesoro(Jugador *jugadorActual) {
         Casillero* casillero = this->tablero->getCursor();
 
         if(casillero->getEstado()==Ocupado){
-            if(casillero->getFicha()->getJugador()==jugadorActual) {
+            Ficha* ficha= casillero->getFicha();
+            if(ficha->getJugador()==jugadorActual && ficha->getEstado()== 'Tesoro') {
                 return true;
             }
         }
