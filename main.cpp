@@ -10,11 +10,35 @@ void determinarParametros(int &ancho, int &alto, int &largo, int cantidadDeJugad
 
 
 int main() {
-    int cantidadJugadores = 3, cantidadDeTesoros=3, alto = 5, largo = 5, ancho = 5;
-    determinarParametros(ancho, alto, largo, cantidadDeJugadores, cantidadDeTesoros);
+    /*
+    int cantidadJugadores = 3, cantidadDeTesoros=3, alto, largo, ancho;
+
+
+    determinarParametros(ancho, alto, largo, cantidadJugadores, cantidadDeTesoros);
     TesoroBinario* tesoro;
     tesoro = new TesoroBinario(ancho, alto, largo, cantidadJugadores, cantidadDeTesoros);
     tesoro->jugar();
     delete tesoro;
+    */
+
+
+    Consola* consola;
+    consola = new Consola();
+    Lista<Carta*>* listaCartas = new Lista<Carta*>;
+    Carta* carta1;
+    Carta* carta2;
+    Carta* carta3;
+    carta1 = new Carta(Blindaje);
+    carta2 = new Carta(Radar);
+    carta3 = new Carta(Bloqueo);
+    listaCartas->add(carta1);
+    listaCartas->add(carta2);
+    listaCartas->add(carta3);
+    consola->mostrarCartas(listaCartas);
+    delete consola;
+    delete listaCartas;
+    delete carta1;
+    delete carta2;
+    delete carta3;
     return 0;
 }
