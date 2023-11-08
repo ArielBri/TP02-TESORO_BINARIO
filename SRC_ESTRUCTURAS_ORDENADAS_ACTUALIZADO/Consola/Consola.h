@@ -25,9 +25,28 @@ public:
     void mostrarCartas();
 
     /*
-	 * Pre:
-	 * Pos: destruye la instancia creada
-	 */
+    * Pre:
+    * Pos: devuelve la eleccion del jugador.
+    */
+    char eleccion(char opcion);
+
+    /*
+    * Pre:
+    * Pos: crea un menu de opciones.
+    */
+    void menuDeOpciones();
+
+    /*
+    * Pre:
+    * Pos: valida que la eleccion del jugador sea valida.
+    */
+    void validarEleccion(char opcion);
+
+    /*	
+    /*
+    * Pre:
+    * Pos: destruye la instancia creada
+    */
     virtual ~Consola();
 };
 
