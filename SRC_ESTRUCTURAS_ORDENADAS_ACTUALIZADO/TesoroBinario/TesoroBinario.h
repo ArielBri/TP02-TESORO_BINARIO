@@ -41,7 +41,7 @@ public:
     bool hayGanador();
     /*
      * Pre:
-     * Pos:
+     * Pos: Carga el estado de todo el tablero en vacio <------------------------Modificacion
      */
     void mostrarTablero();
     /*
