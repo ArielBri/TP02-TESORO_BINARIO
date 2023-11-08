@@ -2,6 +2,9 @@
 #define TP_2_BITMAP_H
 
 
+#include "../Tablero/Tablero.h"
+#include "../Jugador/Jugador.h"
+
 class Bitmap {
 private:
 public:
@@ -14,7 +17,7 @@ public:
      * Pre: El tablero debe existir.
      * Pos: Se muestra el tablero de un jugador.
      */
-    void mostrarTablero();
+    void mostrarTablero(Tablero* tablero, Jugador* jugador);
     /*
      * Pre:
      * Pos:
