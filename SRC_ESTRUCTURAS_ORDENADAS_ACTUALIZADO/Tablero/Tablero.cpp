@@ -3,8 +3,8 @@
 
 // ANCHO = X, ALTO = Y, LARGO = Z
 Tablero::Tablero(unsigned int ancho, unsigned int alto, unsigned int largo) {
-    validarCoordenadas(ancho, alto, largo);
-
+    //validarCoordenadas(ancho, alto, largo);//<---------------------------------------La validacion de ancho, alto y largo se realiza en consola
+										//<--------------------------------------- cuando se pide el ingreso del tamaño del tablero
     this->casilleros = new Lista<Lista<Lista<Casillero *> *> *>();
     this->ancho = ancho;
     this->alto = alto;
@@ -69,12 +69,17 @@ Casillero * Tablero::getCasillero(Coordenada *coordenada) {
     return getCasillero(coordenada->getAncho(), coordenada->getAlto(), coordenada->getAlto());
 }
 
-
+//<----------------------------------------------------MODIFICACION Y OBSERVACION: ESTA FUNCION DEBERIA ESTAR EN coordenadas.cpp
 void Tablero::validarCoordenadas(unsigned int anchoIngresado, unsigned int altoIngresado, unsigned int largoIngresado){
+	if (anchoIngresado < 1 || anchoIngresado > this->getAncho() || altoIngresado < 1 || altoIngresado > this->getAlto() || largoIngresado < 1 || largoIngresado > this->getLargo()) {
+		throw "Las coordenadas deben estar dentro del rango del tablero";
+	}	
+}
+/*void Tablero::validarCoordenadas(unsigned int anchoIngresado, unsigned int altoIngresado, unsigned int largoIngresado){
     // Tienen un minimo
     if(anchoIngresado < 1||altoIngresado < 1||largoIngresado < 1){
         throw "Los parametros deben ser mayor a 0";
     }
     // ver bien que deben cumplir los parametros.
-}
+}*/
 
