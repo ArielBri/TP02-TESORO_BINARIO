@@ -40,7 +40,7 @@ public:
     * Pre:
     * Pos: valida que la eleccion del jugador sea valida.
     */
-    void validarEleccion(char opcion);
+    void validarEleccion();
 
     /*	
     /*
