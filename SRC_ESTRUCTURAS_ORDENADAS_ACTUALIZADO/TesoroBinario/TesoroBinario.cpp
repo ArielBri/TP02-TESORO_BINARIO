@@ -35,6 +35,21 @@ bool TesoroBinario::hayGanador(){
 }
 
 
+/*
+*
+* Funcion que carga el estado de todo el tablero en vacio*/
+void TesoroBinario::mostrarTablero() { //<------------------------------------------------Modificacion
+	for (unsigned int i = 1; i <= this->tablero->getAncho(); i++) {
+		for (unsigned int j = 1; j <= this->tablero->getAlto(); j++) {
+			for (unsigned int k = 1; k <= this->tablero->getLargo(); k++) {
+				this->tablero->getCasillero(i,j,k)->setEstado(Vacio);
+			}
+		}
+	}
+}
+/*
+*/
+
 void TesoroBinario::moverTesoro() {
 
 }
