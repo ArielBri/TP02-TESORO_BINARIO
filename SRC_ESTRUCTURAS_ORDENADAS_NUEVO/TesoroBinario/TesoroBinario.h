@@ -14,6 +14,7 @@ private:
     Jugador * jugadorActual;
     Consola * consola;
     Mazo * mazo;
+    Bitmap* bitmap;
 
     int cantidadDeTesorosInicial;
     void crearListaDeJugadores(int cantidadDeJugadores, int cantidadDeTesoros);
