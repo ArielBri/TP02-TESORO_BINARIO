@@ -4,7 +4,7 @@
 // ANCHO = X, ALTO = Y, LARGO = Z
 Tablero::Tablero(unsigned int ancho, unsigned int alto, unsigned int largo) {
     //validarCoordenadas(ancho, alto, largo);//<---------------------------------------La validacion de ancho, alto y largo se realiza en consola
-										//<--------------------------------------- cuando se pide el ingreso del tamaño del tablero
+					//<--------------------------------------- cuando se pide el ingreso del tamaño del tablero
     this->casilleros = new Lista<Lista<Lista<Casillero *> *> *>();
     this->ancho = ancho;
     this->alto = alto;
