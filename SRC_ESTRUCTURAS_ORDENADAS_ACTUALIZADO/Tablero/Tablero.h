@@ -48,7 +48,7 @@ public:
     Casillero * getCasillero(Coordenada* coordenada);
 
 private:
-    /*
+    /*//<----------------------------------------------------MODIFICACION Y OBSERVACION: ESTA FUNCION DEBERIA ESTAR EN coordenadas.cpp
     pos: si los valores no estan en rango, tira una excepcion
     */
     void validarCoordenadas(unsigned int ancho, unsigned int alto, unsigned int largo);
