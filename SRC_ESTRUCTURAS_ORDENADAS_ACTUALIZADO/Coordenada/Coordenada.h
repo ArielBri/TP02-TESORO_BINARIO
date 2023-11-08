@@ -10,6 +10,8 @@ private:
     int ancho;
     int alto;
     int largo;
+   	unsigned int* coordenadas; /*//<----------------------------------------------------MODIFICACION Y OBSERVACION: ESTA FUNCION DEBERIA ESTAR EN coordenadas.cpp
+
 
 public:
     /**
@@ -48,6 +50,15 @@ public:
      * pos: -
     */
     void setLargo(int largo);
+
+    /*//<----------------------------------------------------MODIFICACION Y OBSERVACION: ESTA FUNCION DEBERIA ESTAR EN coordenadas.cpp
+    *
+    * pos: si los valores no estan en rango, tira una excepcion
+    */
+    void validarCoordenadas(unsigned int ancho, unsigned int alto, unsigned int largo);
+    /*
+    */
+
     /**
     * pre: -
     * pos: -
