@@ -1,9 +1,6 @@
 #ifndef TESOROBINARIO_H_
 #define TESOROBINARIO_H_
 
-
-#include "../Tablero/Tablero.h"
-#include "../Jugador/Jugador.h"
 #include "../Consola/Consola.h"
 #include "../Bitmap/Bitmap.h"
 
