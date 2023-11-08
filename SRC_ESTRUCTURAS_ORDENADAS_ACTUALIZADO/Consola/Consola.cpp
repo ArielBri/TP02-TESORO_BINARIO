@@ -30,7 +30,8 @@ void Consola::validarEleccion(char opcion){
     }
 }
 
-char Consola::eleccion(char opcion){
+char Consola::eleccion(){
+    char opcion;
     std::cout<<"Ingrese una opcion"<<std::endl;
     std::cin>> opcion;
     validarEleccion(opcion);
