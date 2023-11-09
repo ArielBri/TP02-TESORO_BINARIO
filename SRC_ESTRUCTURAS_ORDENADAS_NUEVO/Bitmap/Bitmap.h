@@ -22,9 +22,9 @@ public:
     void mostrarTablero(Tablero* tablero, Jugador* jugador);
 
     /*
-	 * Pre:
-	 * Pos:
-	 */
+    * Pre: Espera que se le pase un valor entero (int) como argumento.
+    * Pos: Realizar la conversión de un entero a una cadena.
+    */
     std::string intToString(int numero);
 
     /*
