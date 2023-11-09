@@ -28,11 +28,12 @@ bool TesoroBinario::hayGanador(){
         Jugador* jugador= this->vectorDeJugadores->obtener(i);
         if(jugador->getEstadoJugador() == Activo){
             contadorDeJugadoresActivos++;
-        }
-        if (contadorDeJugadoresActivos>=2){
-            return false;
-        }
+    	}
     }
+    if (contadorDeJugadoresActivos>=2){
+        return false;
+    }
+    
     return true;
 }
 
@@ -308,7 +309,13 @@ void TesoroBinario::metodoEspias() {
 
 
 void TesoroBinario::anunciarGanador() {
-
+    for(int i=1; i<this->cantidadDeJugadores; i++){
+        Jugador* jugadorGanador = this->vectorDeJugadores->obtener(i);
+        if(jugadorGanador->getEstadoJugador() == Activo){
+	    this->consola->imprimirTexto("El ganador es el jugador: ");
+	    std::cout<<this->jugadorActual->devolverJugadorId()<<std::endl;       
+        }
+    }
 }
 
 
