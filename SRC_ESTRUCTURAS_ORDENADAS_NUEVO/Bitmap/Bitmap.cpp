@@ -1,7 +1,7 @@
 #include "Bitmap.h"
 
 void Bitmap::mostrarTablero(Tablero* tablero, Jugador* jugador) {
-
+    crearImagenesTablero(tablero, jugador);
 }
 
 std::string Bitmap::intToString(int numero) {
