@@ -68,3 +68,5 @@ public:
 			std::string nombreImagen);
 };
 
+#endif //BITMAP_H
+
