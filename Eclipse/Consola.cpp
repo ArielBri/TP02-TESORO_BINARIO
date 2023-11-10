@@ -92,7 +92,7 @@ void Consola::imprimirTexto(std::string texto) {
 }
 
 
-void Consola::imprimirGandor(int idJugador) {
+void Consola::imprimirGanador(int idJugador) {
     std::cout<<"El ganador es el jugador numero: "<<idJugador<<std::endl;
 }
 
