@@ -33,16 +33,15 @@ void Jugador::obtenerCarta(Mazo* mazo){
     this->cartasDelJugador->add(mazo->obtenerCarta());
 }
 
-
+/*<-------------------------------------------------FUNCION CREADA Y USADA EN TESORO BINARIO-----------------------------------
 // CODEAR crea de forma aleatoria los tesoros
 void Jugador::inicializarTesoros(int cantidadDeTesoros){
     Lista<Ficha*>* fichasJugador = this->fichas;
     for(int i=0; i<cantidadDeTesoros; i++){
         //fichasJugador->add(new Ficha(Tesoro, this->idJugador));
     }
-
-}
-
+}<-------------------------------------------------FUNCION CREADA Y USADA EN TESORO BINARIO-----------------------------------
+*/
 
 Lista<Ficha*>* Jugador::obtenerFichasDelJugador(){
     return this->fichas;
@@ -77,4 +76,3 @@ Jugador::~Jugador(){
 void Jugador::setEstadoJugador(EstadoJugador estadoJugador) {
     this->estado = estadoJugador;
 }
-
