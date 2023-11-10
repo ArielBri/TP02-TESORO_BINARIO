@@ -339,6 +339,17 @@ void TesoroBinario::metodoEspiaChoque(Casillero *casillero, TipoFicha ficha) {
     casillero->setFicha(NULL);
 }
 
+void TesoroBinario::metodoEspiasChoqueCasilleroNoInactivo(Casillero* casillero, Coordenada* coordenada){
+    Ficha* espia;
+    espia = new Ficha(Espia, this->jugadorActual->devolverJugadorId(), coordenada);
+    if(casillero->getEstado()==Ocupado){
+        this->metodoEspiaChoque(casillero, casillero->getFicha()->getTipo());
+        delete espia;
+    } else {
+        this->colocarFicha(espia);
+        this->jugadorActual->obtenerFichasDelJugador()->add(espia);
+    }
+}
 
 void TesoroBinario::metodoEspias() {
     if(this->consola->quiereEjecutarAccion("Quiere poner un espia?") && this->turnoValido==Valido){
@@ -347,18 +358,11 @@ void TesoroBinario::metodoEspias() {
         coordenada = this->consola->pedirCoordenada("poner un espia");
         casillero = this->tablero->getCasillero(coordenada);
         if(casillero->getEstado()!=Inactivo) {
-            Ficha* espia;
-            espia = new Ficha(Espia, this->jugadorActual->devolverJugadorId(), coordenada);
-            if(casillero->getEstado()==Ocupado){
-                this->metodoEspiaChoque(casillero, casillero->getFicha()->getTipo());
-                delete espia;
-            } else {
-                this->colocarFicha(espia);
-                this->jugadorActual->obtenerFichasDelJugador()->add(espia);
-            }
-        } else {
-            this->consola->imprimirTexto("perdiste la ficha porque el casillero estaba inactivo");
-        }
+            this->metodoEspiasChoqueCasilleroNoInactivo(casillero, coordenada);
+            return;
+        } 
+        this->consola->imprimirTexto("perdiste la ficha porque el casillero estaba inactivo");
+        
     }
 
 }
