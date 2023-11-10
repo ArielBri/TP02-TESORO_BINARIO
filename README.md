@@ -2,3 +2,4 @@
 Trabajo Práctico N°2 Tesoro Binario
 
 //Tablero Validado -> Felipe 
+//NuevaEsperanza->Ivan
