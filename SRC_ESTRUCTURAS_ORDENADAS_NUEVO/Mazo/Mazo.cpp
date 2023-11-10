@@ -5,7 +5,7 @@ Mazo::Mazo() {
     this->valor = 3;
 }
 
-
+// RANDOM->JG
 Carta* Mazo::obtenerCarta() {
     TipoCarta tipo;
     int numero = 0;
