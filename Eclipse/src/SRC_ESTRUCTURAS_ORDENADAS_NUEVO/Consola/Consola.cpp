@@ -143,22 +143,7 @@ void Consola::tesoroEnLaCoordenada(int x, int y, int z){
 	std::cout<<"Hay un tesoro en la coordenada: "<<x<<","<<y<<","<<z<<","<<std::endl;
 }
 
-void cantidadDeCartasQueSeAgregaron(int cantidad){
+
+void Consola::cantidadDeCartasQueSeAgregaron(int cantidad){
 	std::cout<<"El numero de cartas que se agregaron es: "<<cantidad<<std::endl;
 }
-
-/*
-int Consola::pedirJugadorId(int cant) {
-    int Id;
-    std::cout << " Ingrese el indice de la carta a jugar: ";
-    std::cin >> Id;
-    // validar que sea un numero.
-    while (Id < 1 || Id > cantidadDeCartas) {
-        std::cout << "Ingrese el indice de la carta dentro de rango: [1," << cantidadDeCartas << "]" << " a jugar: ";
-        std::cin >> Id;
-    }
-    return Id;
-
-
-}
-*/
