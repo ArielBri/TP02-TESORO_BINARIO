@@ -26,7 +26,7 @@ TesoroBinario::TesoroBinario(int ancho, int alto, int largo, int cantidadDeJugad
 
 bool TesoroBinario::hayGanador(){
     int contadorDeJugadoresActivos = 0;
-    for(int i=1; i<this->cantidadDeJugadores; i++){
+    for(int i=1; i<=this->cantidadDeJugadores; i++){ //<----------------------Se agrego i<=this
         Jugador* jugador= this->vectorDeJugadores->obtener(i);
         if(jugador->getEstadoJugador() == Activo){
             contadorDeJugadoresActivos++;
@@ -87,7 +87,7 @@ void TesoroBinario::usarCarta(Carta* carta){
             this->jugarObtenerCartas4();
             break;
         default:
-            throw "No se encontró una carta";
+            throw "No se encontrÃ³ una carta";
     }
     delete carta;
 
@@ -373,7 +373,7 @@ void TesoroBinario::anunciarGanador() {
     for(int i=1; i<this->cantidadDeJugadores; i++){
         Jugador* jugadorGanador = this->vectorDeJugadores->obtener(i);
         if(jugadorGanador->getEstadoJugador() == Activo){
-	        this->consola->imprimirGandor(jugadorActual->devolverJugadorId());
+	        this->consola->imprimirGanador(jugadorActual->devolverJugadorId());
             return;
         }
     }
@@ -496,6 +496,3 @@ TesoroBinario::~TesoroBinario(){
     delete bitmap;
 
 }
-
-
-
