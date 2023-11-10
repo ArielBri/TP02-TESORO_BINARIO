@@ -10,9 +10,9 @@
 class Consola {
 public:
     /*
-	 * Pre:
-	 * Pos:
-	 */
+     * Pre:
+     * Pos:
+     */
     Consola();
 
     /*
