@@ -26,7 +26,7 @@ TesoroBinario::TesoroBinario(int ancho, int alto, int largo, int cantidadDeJugad
 
 bool TesoroBinario::hayGanador(){
     int contadorDeJugadoresActivos = 0;
-    for(int i=1; i<=this->cantidadDeJugadores; i++){ //<----------------------Se agrego i<=this
+    for(int i=1; i<=this->cantidadDeJugadores; i++){ //<---------Se agrego i<=this
         Jugador* jugador= this->vectorDeJugadores->obtener(i);
         if(jugador->getEstadoJugador() == Activo){
             contadorDeJugadoresActivos++;
@@ -158,7 +158,12 @@ void TesoroBinario::inicializarTesoros(int cantidadDeTesorosPorJugador, Jugador*
 void TesoroBinario::inicializarJuego() {
     for(int i=1; i<= this->cantidadDeJugadores; i++){
         Jugador* jugador = this->vectorDeJugadores->obtener(i);
-        jugador->inicializarTesoros(this->cantidadDeTesorosInicial);
+        
+	/*<-------------------------------------------------FUNCION REPETIDA EN JUGADOR Y TESORO BINARIO-----------------------------------
+ 	 * Hay dos funciones inicializarTesoros una en TesoroBinario y otra en Jugadores
+         * Parece estar completa la de TesoroBinario, habria que borrar la de Jugadores.
+         * Corrijo esta linea por la de abajo: jugador->inicializarTesoros(this->cantidadDeTesorosInicial);*/
+        this->inicializarTesoros(this->cantidadDeTesorosInicial,jugador);  
     }
 }
 
