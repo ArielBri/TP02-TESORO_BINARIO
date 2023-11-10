@@ -27,12 +27,16 @@ private:
     TipoTurno turnoValido;
     int cantidadDeJugadores;
     int cantidadDeTesorosInicial;
+    /*
+     * Pre: el parametro deben ser entero positivo.
+     * Pos: crea un vector de punteros a Jugador
+     */
     void crearVectorDeJugadores(int cantidadDeJugadores);
 
 public:
     /*
-     * Pre:
-     * Pos:
+     * Pre: los parametros deben ser enteros positivos.
+     * Pos: crea la instancia TesoroBinario.
      */
     TesoroBinario(int ancho, int alto, int largo, int cantidadDeJugadores, int cantidadDeTesoros);
     /*
