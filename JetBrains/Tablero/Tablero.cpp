@@ -47,6 +47,9 @@ Casillero * Tablero::getCasillero(Coordenada *coordenada) {
     return getCasillero(coordenada->getAncho(), coordenada->getAlto(), coordenada->getLargo());
 }
 
+Lista<Lista<Lista<Casillero *> *> *> * Tablero::getCasilleros(){
+    return this->casilleros;
+}
 
 void Tablero::validarCoordenadas(unsigned int anchoIngresado, unsigned int altoIngresado, unsigned int largoIngresado){
     // Tienen un minimo
