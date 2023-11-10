@@ -48,6 +48,10 @@ public:
      */
     Casillero * getCasillero(Coordenada* coordenada);
     /*
+     * pos:
+     */
+    Lista<Lista<Lista<Casillero *> *> *> * getCasilleros();
+    /*
      * pos: determina si los valores no estan en rango.
      */
     bool coordenadaDentroDelTablero(unsigned int anchoIngresado, unsigned int altoIngresado, unsigned int largoIngresado);
