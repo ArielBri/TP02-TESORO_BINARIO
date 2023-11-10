@@ -96,8 +96,8 @@ public:
      */
     void jugarEspias2();
     /*
-     * Pre: 
-     * Pos:
+     * Pre: El jugador eligio usar esta carta.
+     * Pos: Permite al jugador de turno ver los espias del jugador que elija.
      */
     void jugarMostrarEspiasDeJugadorActivo();
     /*
