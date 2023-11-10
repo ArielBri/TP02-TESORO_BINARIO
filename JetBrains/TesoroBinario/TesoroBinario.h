@@ -159,6 +159,11 @@ public:
      * Pre:
      * Pos:
      */
+    void metodoEspiasChoqueCasilleroNoInactivo(Casillero* casillero, Coordenada* coordenada);
+    /*
+     * Pre:
+     * Pos:
+     */
     virtual ~TesoroBinario();
 };
 
