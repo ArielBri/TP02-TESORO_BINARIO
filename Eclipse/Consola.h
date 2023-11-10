@@ -10,49 +10,49 @@
 class Consola {
 public:
     /*
-	 * Pre:
-	 * Pos:
-	 */
+     * Pre:
+     * Pos: Crea la instancia Consola
+     */
     Consola();
 
     /*
-     * Pre:
-     * Pos:
+     * Pre: 
+     * Pos: Devuelve un booleano que indica si el jugador desea realizar la accion o no.
      */
     bool quiereEjecutarAccion(std::string accion);
     /*
      * Pre:
-     * Pos:
+     * Pos: Muestra por consola al jugador las cartas que posee.
      */
     void mostrarCartas(Lista<Carta*>* listaDeCartas);
     /*
-     * Pre:
-     * Pos: devuelve el número de la carta.
+     * Pre: El parametro debe ser mayor a 0.
+     * Pos: devuelve el nÃºmero de la carta.
      */
     int pedirAlJugadorElIndiceDeCarta(int cantidadDeCartas);
     /*
-	 *
-	 *
-	 */
+     * Pre: El parametro debe ser un string que especifique para que se piden las coordenadas.
+     * Pos: Pide al jugador el ingreso de coordenadas, crea la instancia con ellas y devuelve un puntero a Coordenada.
+     */
     Coordenada* pedirCoordenada(std::string motivo);
     /*
-     * Pre:
-     * Pos:
+     * Pre: El parametro debe ser un string.
+     * Pos: Muestra por pantalla el texto recibido por parametro.
      */
     void imprimirTexto(std::string texto);
     /*
-     * Pre:
-     * Pos:
+     * Pre: El idJugador debe existir y ser mayor a 0.
+     * Pos: Muestra por consola el jugador que gano la partida.
      */
-    void imprimirGandor(int idJugador);
+    void imprimirGanador(int idJugador);
     /*
      * Pre:
-     * Pos:
+     * Pos: El jugador actual elige un jugador rival, la funcion devuelve un puntero que apunta al jugador elegido.
      */
     Jugador* mostrarJugadoresActivosYElegirJugador(Vector<Jugador *> *vectorDeJugadores);
     /*
      * Pre:
-     * Pos:
+     * Pos: Muestra si el jugador tiene espias y las coordenadas de los mismos.
      */
     void mostrarEspiasDelJugador(Jugador* jugador);
     /*
@@ -60,9 +60,15 @@ public:
      * Pos: destruye la consola.
      */
     virtual ~Consola();
-
+    /*
+     * Pre:
+     * Pos: 
+     */
     void tesoroEnLaCoordenada(int x, int y, int z);
-
+    /*
+     * Pre:
+     * Pos: 
+     */
     void cantidadDeCartasQueSeAgregaron(int cantidad);
 };
 
