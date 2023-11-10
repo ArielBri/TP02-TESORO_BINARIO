@@ -139,6 +139,23 @@ public:
      * Pre:
      * Pos:
      */
+    void metodoMoverTesoroCasilleroInactivo(Coordenada* coordenadaNueva);
+    /*
+    * Pre:
+    * Pos:
+    */
+    void metodoMoverTesoroCasilleroOcupado(Coordenada* coordenadaActual,Coordenada *coordenadaNueva,
+                                           Casillero* casilleroActual,Casillero* casilleroNuevo);
+    /*
+    * Pre:
+    * Pos:
+    */
+    void metodoMoverTesoroCasilleroVacio(Coordenada* coordenadaActual,Coordenada *coordenadaNueva,
+                                         Casillero* casilleroActual,Casillero* casilleroNuevo);
+    /*
+     * Pre:
+     * Pos:
+     */
     void anunciarGanador();
     /*
      * Pre:
@@ -164,8 +181,10 @@ public:
      * Pre:
      * Pos:
      */
+    void subMetodoMoverTesoro(Casillero* casilleroNuevo, Coordenada* coordenadaNueva);
+    /*
+     * Pre:
+     * Pos:
+     */
     virtual ~TesoroBinario();
 };
-
-
-#endif
