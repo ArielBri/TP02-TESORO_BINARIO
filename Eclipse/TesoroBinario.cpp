@@ -1,14 +1,13 @@
 #include "TesoroBinario.h"
 
 
-
 void TesoroBinario::crearVectorDeJugadores(int cantidadJugadores) {
     Jugador* jugadorNULL = NULL;
     this->vectorDeJugadores = new Vector<Jugador*>(cantidadJugadores, jugadorNULL);
-	for (unsigned int i = 1; i <= cantidadJugadores; i++) {
-		Jugador* jugador = new Jugador(i);
+    for (int i = 1; i <= cantidadJugadores; i++) {
+        Jugador* jugador = new Jugador(i);
         this->vectorDeJugadores->agregar(i, jugador);
-	}
+    }
 }
 
 TesoroBinario::TesoroBinario(int ancho, int alto, int largo, int cantidadDeJugadores, int cantidadDeTesoros) {
@@ -30,7 +29,7 @@ bool TesoroBinario::hayGanador(){
         Jugador* jugador= this->vectorDeJugadores->obtener(i);
         if(jugador->getEstadoJugador() == Activo){
             contadorDeJugadoresActivos++;
-    	}
+        }
         if (contadorDeJugadoresActivos>=2){
             return false;
         }
@@ -145,7 +144,6 @@ void TesoroBinario::jugar(){
 
 
 void TesoroBinario::inicializarTesoros(int cantidadDeTesorosPorJugador, Jugador* jugador){
-    Lista<Ficha*>* fichasJugador = jugador->obtenerFichasDelJugador();
     int limite = (this->cantidadDeTesorosInicial*this->cantidadDeJugadores)/2;
     for(int i=1; i<=cantidadDeTesorosPorJugador; i++){
         Coordenada* coordenadaTesoro = new Coordenada(i,1+(rand()%limite) ,jugador->devolverJugadorId());
@@ -159,12 +157,7 @@ void TesoroBinario::inicializarTesoros(int cantidadDeTesorosPorJugador, Jugador*
 void TesoroBinario::inicializarJuego() {
     for(int i=1; i<= this->cantidadDeJugadores; i++){
         Jugador* jugador = this->vectorDeJugadores->obtener(i);
-        
-	/*<-------------------------------------------------FUNCION REPETIDA EN JUGADOR Y TESORO BINARIO-----------------------------------
- 	 * Hay dos funciones inicializarTesoros una en TesoroBinario y otra en Jugadores
-         * Parece estar completa la de TesoroBinario, habria que borrar la de Jugadores.
-         * Corrijo esta linea por la de abajo: jugador->inicializarTesoros(this->cantidadDeTesorosInicial);*/
-        this->inicializarTesoros(this->cantidadDeTesorosInicial,jugador);  
+        this->inicializarTesoros(this->cantidadDeTesorosInicial,jugador);
     }
 }
 
@@ -183,10 +176,9 @@ void TesoroBinario::jugarBlindaje() {
 
 
 bool TesoroBinario::hayTesoroEnCasillero(int X, int Y, int Z){
-
     return this->tablero->coordenadaDentroDelTablero(X, Y, Z)
-         &&this->tablero->getCasillero(X, Y, Z)->getEstado()==Ocupado
-         &&this->tablero->getCasillero(X, Y, Z)->getFicha()->getTipo()==Tesoro;
+           &&this->tablero->getCasillero(X, Y, Z)->getEstado()==Ocupado
+           &&this->tablero->getCasillero(X, Y, Z)->getFicha()->getTipo()==Tesoro;
 }
 
 
@@ -269,7 +261,6 @@ void TesoroBinario::metodoCartas() {
     this->consola->mostrarCartas(cartas);
 
     if(this->consola->quiereEjecutarAccion("Quiere usar una Carta?")){
-
         int indice = this->consola->pedirAlJugadorElIndiceDeCarta(cartas->contarElementos());
         this->usarCarta(cartas->get(indice));
         cartas->remover(indice);
@@ -379,7 +370,7 @@ void TesoroBinario::anunciarGanador() {
     for(int i=1; i<this->cantidadDeJugadores; i++){
         Jugador* jugadorGanador = this->vectorDeJugadores->obtener(i);
         if(jugadorGanador->getEstadoJugador() == Activo){
-	        this->consola->imprimirGanador(jugadorActual->devolverJugadorId());
+            this->consola->imprimirGanador(jugadorActual->devolverJugadorId());
             return;
         }
     }
@@ -392,8 +383,6 @@ void TesoroBinario::metodoMoverTesoro() {
         Casillero* casilleroActual;
         Coordenada* coordenadaNueva;
         Casillero* casilleroNuevo;
-
-
         coordenadaNueva = this->consola->pedirCoordenada("colocar Tesoro");
         casilleroNuevo = this->tablero->getCasillero(coordenadaNueva);
 
