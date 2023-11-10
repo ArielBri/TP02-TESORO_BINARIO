@@ -129,7 +129,22 @@ public:
      * Pre:
      * Pos:
      */
+    void metodoChoqueTesoro(Coordenada* coordenadaActual,Coordenada *coordenadaNueva, Casillero* casilleroActual,Casillero* casilleroNuevo);
+    /*
+     * Pre:
+     * Pos:
+     */
+    void metodoTesoroMinaOcupado(Casillero* casillero);
+    /*
+     * Pre:
+     * Pos:
+     */
     void metodoEspias();
+    /*
+     * Pre:
+     * Pos:
+     */
+    void subMetodoMoverTesoro(Casillero* casilleroNuevo, Coordenada* coordenadaNueva);
     /*
      * Pre:
      * Pos:
@@ -181,10 +196,11 @@ public:
      * Pre:
      * Pos:
      */
-    void subMetodoMoverTesoro(Casillero* casilleroNuevo, Coordenada* coordenadaNueva);
-    /*
-     * Pre:
-     * Pos:
-     */
     virtual ~TesoroBinario();
 };
+
+
+#endif
+
+ 
+  
