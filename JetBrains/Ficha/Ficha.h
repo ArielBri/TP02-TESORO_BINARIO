@@ -24,7 +24,10 @@ public:
      * pos: -
      */
     Ficha(TipoFicha tipo, int idJugador, Coordenada *coordenada);
-
+     /**
+     * pre: -
+     * pos: -
+     */
     TipoFicha getTipo();
 
     /**
