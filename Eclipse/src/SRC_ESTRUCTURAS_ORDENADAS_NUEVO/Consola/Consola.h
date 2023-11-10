@@ -57,13 +57,19 @@ public:
     void mostrarEspiasDelJugador(Jugador* jugador);
     /*
      * Pre:
+     * Pos:
+     */
+    void tesoroEnLaCoordenada(int x, int y, int z);
+    /*
+     * Pre:
+     * Pos:
+     */
+    void cantidadDeCartasQueSeAgregaron(int cantidad);
+    /*
+     * Pre:
      * Pos: destruye la consola.
      */
     virtual ~Consola();
-
-    void tesoroEnLaCoordenada(int x, int y, int z);
-
-    void cantidadDeCartasQueSeAgregaron(int cantidad);
 };
 
 
