@@ -258,6 +258,7 @@ void TesoroBinario::metodoCartas() {
     this->consola->mostrarCartas(cartas);
 
     if(this->consola->quiereEjecutarAccion("Quiere usar una Carta?")){
+        this->consola->mostrarCartas(this->jugadorActual->obtenerCartasDelJugador());
         int indice = this->consola->pedirAlJugadorElIndiceDeCarta(cartas->contarElementos());
         this->usarCarta(cartas->get(indice));
         cartas->remover(indice);
@@ -284,6 +285,19 @@ void TesoroBinario::eliminarFichaDeLaListaDeFichasDelJugador(Ficha* ficha) {
 }
 
 
+void TesoroBinario::metodoTesoroMinaOcupado(Casillero* casillero){
+    this->eliminarFichaDeLaListaDeFichasDelJugador(casillero->getFicha());
+    casillero->setEstado(Inactivo);
+    casillero->setTurnosRestantesInactivo(5);
+    if(casillero->getFicha()->getTipo()==TesoroMina){
+        this->turnoValido  = Invalido;
+    }
+    delete casillero->getFicha();
+    casillero->setFicha(NULL);
+
+}
+
+
 void TesoroBinario::metodoTesoroMina() {
     if(this->consola->quiereEjecutarAccion("Quiere poner un TesoroMina?") && this->turnoValido==Valido){
         Coordenada* coordenada;
@@ -294,16 +308,8 @@ void TesoroBinario::metodoTesoroMina() {
             Ficha* tesoroMina;
             tesoroMina = new Ficha(TesoroMina, this->jugadorActual->devolverJugadorId(), coordenada);
             if(casillero->getEstado()==Ocupado){
-                this->eliminarFichaDeLaListaDeFichasDelJugador(casillero->getFicha());
-                casillero->setEstado(Inactivo);
-                casillero->setTurnosRestantesInactivo(5);
-                if(casillero->getFicha()->getTipo()==TesoroMina){
-                    this->turnoValido  = Invalido;
-                }
-                delete casillero->getFicha();
-                casillero->setFicha(NULL);
+                this->metodoTesoroMinaOcupado(casillero);
                 delete tesoroMina;
-
             } else {
                 this->colocarFicha(tesoroMina);
                 this->jugadorActual->obtenerFichasDelJugador()->add(tesoroMina);
@@ -385,55 +391,41 @@ void TesoroBinario::metodoMoverTesoroCasilleroInactivo(Coordenada* coordenadaNue
     delete coordenadaNueva;
 }
 
+
+void TesoroBinario::metodoChoqueTesoro(Coordenada* coordenadaActual,Coordenada *coordenadaNueva, Casillero* casilleroActual,Casillero* casilleroNuevo){
+    Ficha* fichaCasilleroNuevo = casilleroNuevo->getFicha();
+    Ficha* fichaActual = casilleroActual->getFicha();
+    TipoFicha tipo = fichaCasilleroNuevo->getTipo();
+    if(tipo == Tesoro || tipo == TesoroBlindado){
+        this->consola->tesoroEnLaCoordenada(coordenadaNueva->getAncho(), coordenadaNueva->getAlto(),
+                                            coordenadaNueva->getLargo());
+    }else if(tipo==Espia||tipo==TesoroMina){
+            this->eliminarFichaDeLaListaDeFichasDelJugador(fichaActual);
+            this->eliminarFichaDeLaListaDeFichasDelJugador(fichaCasilleroNuevo);
+            casilleroActual->setFicha(NULL);
+            casilleroNuevo->setFicha(NULL);
+            casilleroNuevo->setEstado(Inactivo);
+            delete fichaCasilleroNuevo;
+            delete fichaActual;
+    }
+    delete coordenadaNueva;
+    delete coordenadaActual;
+};
+
+
+
 void TesoroBinario::metodoMoverTesoroCasilleroOcupado(Coordenada* coordenadaActual,Coordenada *coordenadaNueva,
                                                       Casillero* casilleroActual,Casillero* casilleroNuevo) {
-    Ficha *fichaActual;
     coordenadaActual = this->consola->pedirCoordenada("elegir el tesoro a mover(no se puede mover Tesoro blindado)");
     casilleroActual = this->tablero->getCasillero(coordenadaActual);
     if (casilleroActual->getEstado() == Ocupado && casilleroActual->getFicha()->getTipo() == Tesoro) {
-        Ficha *fichaCasilleroNuevo = casilleroNuevo->getFicha();
-        fichaActual = casilleroActual->getFicha();
-        switch (fichaCasilleroNuevo->getTipo()) {
-            case Tesoro:
-                this->consola->tesoroEnLaCoordenada(coordenadaNueva->getAncho(), coordenadaNueva->getAlto(),
-                                                    coordenadaNueva->getLargo());
-                delete coordenadaNueva;
-                delete coordenadaActual;
-                break;
-            case Espia:
-                this->eliminarFichaDeLaListaDeFichasDelJugador(fichaActual);
-                this->eliminarFichaDeLaListaDeFichasDelJugador(fichaCasilleroNuevo);
-                casilleroActual->setFicha(NULL);
-                casilleroNuevo->setFicha(NULL);
-                casilleroNuevo->setEstado(Inactivo);
-                delete fichaCasilleroNuevo;
-                delete fichaActual;
-                delete coordenadaNueva;
-                delete coordenadaActual;
-                break;
-            case TesoroMina:
-                this->eliminarFichaDeLaListaDeFichasDelJugador(fichaActual);
-                this->eliminarFichaDeLaListaDeFichasDelJugador(fichaCasilleroNuevo);
-                casilleroActual->setFicha(NULL);
-                casilleroNuevo->setFicha(NULL);
-                delete fichaCasilleroNuevo;
-                delete fichaActual;
-                delete coordenadaNueva;
-                delete coordenadaActual;
-                break;
-            case TesoroBlindado:
-                this->consola->tesoroEnLaCoordenada(coordenadaNueva->getAncho(), coordenadaNueva->getAlto(),
-                                                    coordenadaNueva->getLargo());
-                delete coordenadaNueva;
-                delete coordenadaActual;
-                break;
-        }
+
     }
 }
 
 
 void TesoroBinario::metodoMoverTesoroCasilleroVacio(Coordenada* coordenadaActual,Coordenada *coordenadaNueva,
-Casillero* casilleroActual,Casillero* casilleroNuevo) {
+                                                    Casillero* casilleroActual,Casillero* casilleroNuevo) {
     Ficha *fichaActual;
     coordenadaActual = this->consola->pedirCoordenada("elegir el tesoro a mover(no se puede mover Tesoro blindado)");
     casilleroActual = this->tablero->getCasillero(coordenadaActual);
@@ -443,7 +435,7 @@ Casillero* casilleroActual,Casillero* casilleroNuevo) {
         fichaActual->setCoordenada(coordenadaNueva);
         this->colocarFicha(fichaActual);
         return;
-    } 
+    }
     this->consola->imprimirTexto("No hay un tesoro en esta coordenada");
 }
 
