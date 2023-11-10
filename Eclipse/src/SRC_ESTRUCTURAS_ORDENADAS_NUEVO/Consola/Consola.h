@@ -31,9 +31,9 @@ public:
      */
     int pedirAlJugadorElIndiceDeCarta(int cantidadDeCartas);
     /*
-	 *
-	 *
-	 */
+     * Pre:
+     * Pos:
+     */
     Coordenada* pedirCoordenada(std::string motivo);
     /*
      * Pre:
