@@ -5,22 +5,19 @@
  * Pos: Establece las dimensiones que tendra el tablero
  */
 void determinarParametros(int &ancho, int &alto, int &largo, int cantidadDeJugadores, int cantidadDeTesoros){
-	//OBSERVACION: si se ingresan 2 jugadores y 1 tesoro en tablero serian solo 2 casilleros. Se comenta una 
-	//condicion por si se quiere determinar un tablero mas grande cuando se da esa situacion.
     int cantidadDeCasillerosMinima = cantidadDeJugadores*cantidadDeTesoros;
-	/*if (cantidadDeCasillerosMinima==2){
-		ancho=cantidadDeCasillerosMinima*2;
-		alto = ancho;
-    	largo = cantidadDeJugadores*2;
-	}
-	else{*/
-		ancho = cantidadDeCasillerosMinima/2;
-		if(cantidadDeJugadores%2!=0){
+	if (cantidadDeCasillerosMinima==2){
+	    ancho=cantidadDeCasillerosMinima*2;
+	    alto = ancho;
+    	    largo = cantidadDeJugadores*2;
+	} else{
+	    ancho = cantidadDeCasillerosMinima/2;
+	    if(cantidadDeJugadores%2!=0){
 	        ancho++;
 	    }
-		alto = ancho;
-    	largo = cantidadDeJugadores;
-	//}
+	    alto = ancho;
+    	    largo = cantidadDeJugadores;
+	}
      
 }
 
