@@ -60,6 +60,7 @@ int main() {
 
     TesoroBinario* tesoro;
     Consola* consola;//<___________________________________________Se agrega para imprimir texto en las validaciones
+    consola = new Consola;
     int cantidadJugadores, cantidadDeTesoros, alto, largo, ancho;
     cantidadJugadores = solicitarCantidadDeJugadores(consola);
     cantidadDeTesoros = solicitarCantidadDeTesoros(consola);
