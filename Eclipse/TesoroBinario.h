@@ -146,7 +146,7 @@ public:
      */
     bool hayTesoroEnCasillero(int X, int Y, int Z);
     /*
-     * Pre: 
+     * Pre: cantidadDeTesorosPorJugador debe ser mayor a 0 y el puntero debe ser distinto de NULL.
      * Pos: Coloca los tesoros en el tablero y los agrega a la lista de fichas del jugador recibido por parametro.
      */
     void inicializarTesoros(int cantidadDeTesorosPorJugador, Jugador* jugador);
