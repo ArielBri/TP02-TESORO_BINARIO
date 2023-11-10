@@ -17,37 +17,40 @@ private:
     EstadoJugador estado;
 
 public:
-    /*
-     * Pre: numero de jugador debe ser entero mayor a 0.
-     * Pos: crea una instancia de jugador.
-     */
+	/*
+	 * Pre: numero de jugador debe ser entero mayor a 0
+	 * Pos: crea una instancia de jugador
+	 */
     explicit Jugador(int numeroJugador);
+	/*
+	 * Pre:
+	 * Pos: devuelve la cantidad de tesoros
+	 */
+	int devolverCantidadDeTesoros();
     /*
-     * Pre:
-     * Pos: devuelve la cantidad de tesoros
-     */
-    int devolverCantidadDeTesoros();
-    /*
-     * Pre:
-     * Pos: devuelve la lista de fichas del jugador
-     */
+	 * Pre:
+	 * Pos: devuelve la lista de fichas del jugador
+	 */
     Lista<Ficha*>* obtenerFichasDelJugador();
     /*
-     * Pre:
-     * Pos: devuelve la lista de cartas del jugador
-     */
+	 * Pre:
+	 * Pos: devuelve la lista de cartas del jugador
+	 */
     Lista<Carta*>* obtenerCartasDelJugador();
-    /*
-     * Pre:
-     * Pos: devuelve el numero de jugador
-     */
+	/*
+	 * Pre:
+	 * Pos: devuelve el numero de jugador
+	 */
     int devolverJugadorId();
-    /*
+    
+    /*<-------------------------------------------------FUNCION CREADA Y USADA EN TESORO BINARIO-----------------------------------
      * Pre: El parametro recibido debe ser mayor a 0.
      * Pos: Carga los tesoros al tablero de forma aleatoria
-     */
+     
     void inicializarTesoros(int cantidadDeTesoros);
-    /*
+    <-------------------------------------------------FUNCION CREADA Y USADA EN TESORO BINARIO-----------------------------------*/
+    
+	/*
      * Pre:
      * Pos: Devuelve el estado del jugador.
      */
