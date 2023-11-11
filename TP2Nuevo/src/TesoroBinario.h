@@ -46,22 +46,22 @@ public:
     void inicializarJuego();
     /*
      * Pre:
-     * Pos:
+     * Pos: devuelve false si hay 2 o mas jugadores con tesoros y true si queda un solo jugador.
      */
     bool hayGanador();
     /*
-     * Pre:
-     * Pos:
+     * Pre: 
+     * Pos: coloca la ficha recibida por parametro en un casillero y cambia el estado del casillero.
      */
     void colocarFicha(Ficha* ficha);
     /*
     * Pre:
-    * Pos:
+    * Pos: 
     */
     void ejecutarTurno();
     /*
      * Pre:
-     * Pos:
+     * Pos: modifica el vector de jgadores, cambia el estado de los jugadores sin tesoros para que no sigan jugando
      */
     void borrarJugadoresQuePerdieron();
     /*
@@ -76,7 +76,7 @@ public:
     void usarCarta(Carta* carta);
     /*
      * Pre:
-     * Pos:
+     * Pos: 
      */
     void jugarBlindaje();
     /*
@@ -193,7 +193,7 @@ public:
     void metodoEspiasChoqueCasilleroNoInactivo(Casillero* casillero, Coordenada* coordenada);
     /*
      * Pre:
-     * Pos:
+     * Pos: Destuye la instancia TesoroBinario
      */
     virtual ~TesoroBinario();
 };
