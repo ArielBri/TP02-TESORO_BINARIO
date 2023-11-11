@@ -45,17 +45,17 @@ public:
      */
     void setFicha(Ficha* ficha);
     /**
-     * pre: -
-     * pos: Resta 
+     * pre: El casillero debe existir.
+     * pos: Actualiza la cantidad de turno.
      */
     void restarTurnoInactivo();
     /**
-     * pre: -
-     * pos: -
+     * pre: El casillero debe existir.
+     * pos: Asigna una cantidad de turnos a la cantidad de turnos por de inactividad.
      */
     void setTurnosRestantesInactivo(int cantidadDeTurnos);
     /**
-     * pre: -
+     * pre: El casillero debe existir.
      * pos: elimina el casillero
      */
 
