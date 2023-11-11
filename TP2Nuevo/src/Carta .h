@@ -19,18 +19,18 @@ private:
     TipoCarta tipo;
 public:
     /*
-     * Pre:
-     * Pos:
+     * Pre: Un tipo de carta valido.
+     * Pos: Devuelve una carta
      */
     explicit Carta(TipoCarta tipo);
     /*
-     * Pre:
-     * Pos:
+     * Pre: La carta debe existir
+     * Pos: Devuelve el tipo de carta
      */
     TipoCarta verCarta();
     /*
-     * Pre:
-     * Pos:
+     * Pre: La carta debe existir
+     * Pos: Destruye la carta
      */
     ~Carta();
 };
