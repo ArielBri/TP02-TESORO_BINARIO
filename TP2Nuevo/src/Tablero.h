@@ -47,7 +47,7 @@ public:
      */
     Casillero * getCasillero(Coordenada* coordenada);
     /*
-     * pos:
+     * pos: devuelve el puntero al tablero dinamico
      */
     Lista<Lista<Lista<Casillero *> *> *> * getCasilleros();
     /*
