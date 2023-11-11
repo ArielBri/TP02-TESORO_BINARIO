@@ -58,8 +58,8 @@ public:
      */
     void setEstadoJugador(EstadoJugador estadoJugador);
     /*
-     * Pre:
-     * Pos:
+     * Pre: El puntero recibido debe ser distinto de NULL
+     * Pos: Agrega una carta a la lista de cartas del jugador
      */
     void obtenerCarta(Mazo* mazo);
     /*
