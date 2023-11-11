@@ -42,19 +42,20 @@ public:
 	 * Pos: devuelve el numero de jugador
 	 */
     int devolverJugadorId();
-    /*
+    /*	<---------------Borrar Funcion no declarada en Jugador.cpp----------
      * Pre:
      * Pos:
-     */
+     *
     void inicializarTesoros(int cantidadDeTesoros);
+	<---------------Borrar Funcion no declarada en Jugador.cpp----------*/
     /*
      * Pre:
-     * Pos:
+     * Pos: Devuelve el estado del jugador
      */
     EstadoJugador getEstadoJugador();
     /*
-     * Pre:
-     * Pos:
+     * Pre: 
+     * Pos: Cambia el estado del jugador
      */
     void setEstadoJugador(EstadoJugador estadoJugador);
     /*
