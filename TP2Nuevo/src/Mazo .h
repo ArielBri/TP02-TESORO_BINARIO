@@ -14,7 +14,7 @@ private:
 public:
     /*
      * Pre:
-     * Pos:
+     * Pos: crea el mazo
      */
     Mazo();
     /*
@@ -24,7 +24,7 @@ public:
     Carta* obtenerCarta();
     /*
      * Pre:
-     * Pos:
+     * Pos: Destruye el mazo
      */
     ~Mazo();
 };
