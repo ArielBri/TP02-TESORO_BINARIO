@@ -21,22 +21,22 @@ private:
 public:
     /**
      * pre: -
-     * pos: deja un casillero vacio creado de las coordenadas dadas
+     * pos: deja un casillero vacio creado.
      */
     Casillero();
     /**
-     * pre: -
-     * pos: -
+     * pre: El casillero debe existir.
+     * pos: Devuelve el estado del casillero.
      */
     EstadoCasillero getEstado();
     /**
-     * pre: -
-     * pos: -
+     * pre: El casillero debe existir.
+     * pos: Devuelve el casillero con un estado=estado.
      */
     void setEstado(EstadoCasillero estado);
     /**
-     * pre: -
-     * pos: -
+     * pre: El casillero debe existir.
+     * pos: Devuelve la ficha almacenada en el casillero tambien en caso que sea NULL;
      */
     Ficha* getFicha();
     /**
