@@ -30,8 +30,8 @@ private:
 
 public:
     /*
-     * Pre:
-     * Pos:
+     * Pre: parametros deben ser enteros positivos.
+     * Pos: crea la instancia TesoroBinario
      */
     TesoroBinario(int ancho, int alto, int largo, int cantidadDeJugadores, int cantidadDeTesoros);
     /*
