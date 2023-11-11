@@ -21,7 +21,7 @@ private:
 public:
     /**
      * pre: -
-     * pos: deja un casillero vacio creado.
+     * pos: crea un casillero vacio listo para ser usado.
      */
     Casillero();
     /**
@@ -31,7 +31,7 @@ public:
     EstadoCasillero getEstado();
     /**
      * pre: El casillero debe existir.
-     * pos: Devuelve el casillero con un estado=estado.
+     * pos: Setea el casillero con un estado=estado.
      */
     void setEstado(EstadoCasillero estado);
     /**
@@ -40,13 +40,13 @@ public:
      */
     Ficha* getFicha();
     /**
-     * pre: -
-     * pos: -
+     * pre: El casillero debe existir.
+     * pos: Asigna al casillero una ficha.
      */
     void setFicha(Ficha* ficha);
     /**
      * pre: -
-     * pos: -
+     * pos: Resta 
      */
     void restarTurnoInactivo();
     /**
