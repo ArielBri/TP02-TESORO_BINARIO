@@ -14,38 +14,38 @@ private:
 public:
     /**
      * pre: -
-     * pos: -
+     * pos: crea una coordenada con los parametros pasados
      */
     Coordenada(int ancho, int alto, int largo);
 
     /**
      * pre: -
-     * pos: -
+     * pos: devuelve el ancho de la coordenada
      */
     int getAncho();
     /**
      * pre: -
-     * pos: -
+     * pos: devuelve el alto de la coordenada
      */
     int getAlto();
     /**
      * pre: -
-     * pos: -
+     * pos: devuelve el largo de la coordenada
      */
     int getLargo();
     /**
     * pre: -
-    * pos: -
+    * pos: cambia el largo de la coordenada
     */
     void setAncho(int ancho);
     /**
      * pre: -
-     * pos: -
+     * pos: cambia el ancho de la coordenada
      */
     void setAlto(int alto);
     /**
      * pre: -
-     * pos: -
+     * pos: cambia el alto de la coordenada
      */
     void setLargo(int largo);
     /**
