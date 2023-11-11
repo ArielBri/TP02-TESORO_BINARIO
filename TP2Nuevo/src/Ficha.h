@@ -24,12 +24,15 @@ public:
      * pos: -
      */
     Ficha(TipoFicha tipo, int idJugador, Coordenada *coordenada);
-
+    /**
+     * pre: -
+     * pos: Devuelve el tipo de ficha
+     */
     TipoFicha getTipo();
 
     /**
      * pre: -
-     * pos: -
+     * pos: cambia el tipo de ficha
      */
     void setTipo(TipoFicha tipo);
 
@@ -41,36 +44,36 @@ public:
 
     /**
      * pre: -
-     * pos: -
+     * pos: cambia la coordenada de la ficha
      */
     void setCoordenada(Coordenada *coordenada);
 
     /**
      * pre: -
-     * pos: -
+     * pos: devuelve el id del jugador de la ficha
      */
     int getJugadorId();
 
     /**
      * pre: -
-     * pos: -
+     * pos: cambia el jugador de la ficha
      */
     void setJugador(int jugador);
 
     /**
      * pre: -
-     * pos: -
+     * pos: cambia el estado del tesoro a tesoro blindado y queda en ese estado 5 turnos
      */
     void blindarTesoro();
 
     /**
-     * pre: -
-     * pos: -
+     * pre:
+     * pos: restar la cantiddad de turnos que el tesoro este blindado, si es un teosoro blindado 
      */
     void restarContadorDeBlindaje();
     /**
      * pre: -
-     * pos: -
+     * pos: elimina la referencia a la coordenada que contiene
      */
     virtual ~Ficha();
 };
