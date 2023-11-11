@@ -18,7 +18,7 @@ private:
 
 public:
 	/*
-	 * Pre: numero de jugador y cantidad de tesoros debe ser entero mayor a 0
+	 * Pre: numero de jugador debe ser entero mayor a 0
 	 * Pos: crea una instancia de jugador
 	 */
     explicit Jugador(int numeroJugador);
