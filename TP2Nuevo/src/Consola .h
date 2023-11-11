@@ -57,17 +57,17 @@ public:
     void mostrarEspiasDelJugador(Jugador* jugador);
     /*
      * Pre:
-     * Pos:
+     * Pos: Indica que que hay un tesoro los los x y z pasados
      */
     void tesoroEnLaCoordenada(int x, int y, int z);
     /*
      * Pre:
-     * Pos:
+     * Pos:indica la cantidad de carras que se agregaron 
      */
     void cantidadDeCartasQueSeAgregaron(int cantidad);
     /*
      * Pre:
-     * Pos:
+     * Pos: imprime el ide id del jugador
      */
     void imprimirIdJugadorTurno(int idJugador);
     /*
