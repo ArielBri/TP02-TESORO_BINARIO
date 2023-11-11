@@ -63,8 +63,7 @@ void TesoroBinario::ejecutarTurno() {
 }
 
 
-//OBSERVACION cuando se usa la carta ESPIA2, entra en el caso de MostrarEspiasDeJugadorActivo
-//VERIFICAR que carta->verCarta() coincida con la funcion que se debe ejecutar
+
 void TesoroBinario::usarCarta(Carta* carta){
     switch (carta->verCarta()) {
         case Blindaje:
