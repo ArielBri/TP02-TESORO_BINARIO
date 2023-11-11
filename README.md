@@ -1,3 +1,3 @@
 # TP02-TESORO_BINARIO
-Bitmap = magico 
+Bitmap = magico;
 tablero multidimensional
