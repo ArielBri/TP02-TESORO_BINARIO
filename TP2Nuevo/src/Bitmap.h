@@ -21,9 +21,9 @@ public:
     void mostrarTablero(Tablero* tablero, Jugador* jugador);
 
     /*
-	 * Pre:
-	 * Pos:
-	 */
+     * Pre: un enterno
+     * Pos: devuelve un entero convertido en std::string
+     */
     std::string intToString(int numero);
 
     /*
