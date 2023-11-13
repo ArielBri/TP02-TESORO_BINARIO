@@ -126,7 +126,7 @@ public:
     void metodoTesoroMina();
     /*
      * Pre:
-     * Pos:
+     * Pos: Mueve el tesoro de casillero o se pierde dependiendo del tipo de ficha que está almacenada en el casillero nuevo  
      */
     void metodoChoqueTesoro(Coordenada* coordenadaActual,Coordenada *coordenadaNueva, Casillero* casilleroActual,Casillero* casilleroNuevo);
     /*
@@ -142,54 +142,54 @@ public:
     void metodoEspias();
     /*
      * Pre:
-     * Pos:
+     * Pos: Invoca a la funcion adecuada para evaluar que sucede con el tesoro segun el contenido del casillero a donde se lo quiere mover
      */
     void subMetodoMoverTesoro(Casillero* casilleroNuevo, Coordenada* coordenadaNueva);
     /*
      * Pre:
-     * Pos:
+     * Pos: Pide las coordenadas del casillero donde se quiere mover el tesoro e invoca a la funcion que realiza el movimiento
      */
     void metodoMoverTesoro();
     /*
      * Pre:
-     * Pos:
+     * Pos: Notifica al jugador que perdio su tesoro por moverlo a un casillero Inactivo
      */
     void metodoMoverTesoroCasilleroInactivo(Coordenada* coordenadaNueva);
     /*
     * Pre:
-    * Pos:
+    * Pos: El tesoro fue movido a un casillero ocuapado, evalua que hacer y modifica el contenido del casillero e infoma que paso con el tesoro
     */
     void metodoMoverTesoroCasilleroOcupado(Coordenada* coordenadaActual,Coordenada *coordenadaNueva,
                                            Casillero* casilleroActual,Casillero* casilleroNuevo);
     /*
     * Pre:
-    * Pos:
+    * Pos: Mueve el tesoro al casillero nuevo y libera el casillero actual
     */
     void metodoMoverTesoroCasilleroVacio(Coordenada* coordenadaActual,Coordenada *coordenadaNueva,
                                          Casillero* casilleroActual,Casillero* casilleroNuevo);
     /*
-     * Pre:
-     * Pos:
+     * Pre: Debe quedar un solo jugador con estado Activo
+     * Pos: Muestra por consola el jugador que ganó el juego
      */
     void anunciarGanador();
     /*
      * Pre:
-     * Pos:
+     * Pos: Devuelve true si en las coordenadas recibidas se almacena en el casillero una ficha tesoro
      */
     bool hayTesoroEnCasillero(int X, int Y, int Z);
     /*
      * Pre:
-     * Pos:
+     * Pos: Carga los tesoros de los jugadores al tablero
      */
     void inicializarTesoros(int cantidadDeTesorosPorJugador, Jugador* jugador);
     /*
      * Pre:
-     * Pos:
+     * Pos: Coloca un espía en un casillero ocupado y avisa por mesaje que sucedio con el espia
      */
     void metodoEspiaChoque(Casillero *casillero, TipoFicha ficha);
     /*
      * Pre:
-     * Pos:
+     * Pos: Coloca el espia si el casillero está vacio, si el casillero esta ocupado evalua que paso con el espia y avisa
      */
     void metodoEspiasChoqueCasilleroNoInactivo(Casillero* casillero, Coordenada* coordenada);
     /*
