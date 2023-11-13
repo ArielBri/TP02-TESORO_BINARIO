@@ -130,8 +130,8 @@ public:
      */
     void metodoChoqueTesoro(Coordenada* coordenadaActual,Coordenada *coordenadaNueva, Casillero* casilleroActual,Casillero* casilleroNuevo);
     /*
-     * Pre:
-     * Pos:
+     * Pre: el casillero debe tener una ficha dentro
+     * Pos: cambia el estado del casillero recibido a Inactivo y lo deja sin fichas dentro
      */
     void metodoTesoroMinaOcupado(Casillero* casillero);
     /*
