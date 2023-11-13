@@ -41,7 +41,7 @@ public:
     void jugar();
     /*
      * Pre:
-     * Pos:
+     * Pos: carga los jugadores al vector de jugadores e invoca a la funcion que carga los tesoros de cada jugador al tablero
      */
     void inicializarJuego();
     /*
