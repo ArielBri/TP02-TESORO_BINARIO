@@ -61,7 +61,7 @@ public:
     void ejecutarTurno();
     /*
      * Pre:
-     * Pos: modifica el vector de jgadores, cambia el estado de los jugadores sin tesoros para que no sigan jugando
+     * Pos: modifica el vector de jugadores, cambia el estado de los jugadores sin tesoros para que no sigan jugando
      */
     void borrarJugadoresQuePerdieron();
     /*
@@ -76,27 +76,27 @@ public:
     void usarCarta(Carta* carta);
     /*
      * Pre:
-     * Pos: 
+     * Pos: cambia la primer ficha tesoro que encuentra por un tesoro blindado
      */
     void jugarBlindaje();
     /*
      * Pre:
-     * Pos:
+     * Pos: muestra las coordenadas de los tesoros que rodean el radar, 3 casilleros a la redornda
      */
     void jugarRadar();
     /*
      * Pre:
-     * Pos:
+     * Pos: se agrega un tesoro al tablero y a la lista de fichas del jugador
      */
     void partirTesoro();
     /*
      * Pre:
-     * Pos:
+     * Pos: se agregan dos espias al tablero y a la lista de fichas del jugador
      */
     void jugarEspias2();
     /*
      * Pre:
-     * Pos:
+     * Pos: muestra las coordenadas de los espias del jugador elegido por el jugador de turno
      */
     void jugarMostrarEspiasDeJugadorActivo();
     /*
@@ -106,22 +106,22 @@ public:
     void jugarObtenerCartas4();
     /*
      * Pre:
-     * Pos:
+     * Pos: elimina la ficha recibida por parametro de la lista del jugador correspondiente
      */
     void eliminarFichaDeLaListaDeFichasDelJugador(Ficha* ficha);
     /*
      * Pre:
-     * Pos:
+     * Pos: resta un turno a los casilleros inactivos y a los que poseen tesoros blindados
      */
     void actualizarTablero();
     /*
      * Pre:
-     * Pos:
+     * Pos: agrega o quita una carta al jugador en caso de que decida usarla o no
      */
     void metodoCartas();
     /*
      * Pre:
-     * Pos:
+     * Pos: agrega un tesoroMina al tablero, en caso de no se posible ejecuta otra condicion
      */
     void metodoTesoroMina();
     /*
