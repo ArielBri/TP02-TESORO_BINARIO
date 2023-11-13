@@ -136,7 +136,8 @@ public:
     void metodoTesoroMinaOcupado(Casillero* casillero);
     /*
      * Pre:
-     * Pos:
+     * Pos: coloca un espia en el tablero si el casillero lo permite, caso contrario modifica
+     *      el contendido del casillero segun lo indiquen las condiciones 
      */
     void metodoEspias();
     /*
