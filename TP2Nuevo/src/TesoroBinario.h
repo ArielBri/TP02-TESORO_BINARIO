@@ -56,7 +56,7 @@ public:
     void colocarFicha(Ficha* ficha);
     /*
     * Pre:
-    * Pos: 
+    * Pos: muestra y actualiza el tablero del jugador con los movimientos que hizo en su turno
     */
     void ejecutarTurno();
     /*
