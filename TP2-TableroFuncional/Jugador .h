@@ -16,6 +16,8 @@ private:
     Lista<Ficha*>* fichas;
     EstadoJugador estado;
 
+    int pierdeTurno=0;
+
 public:
 	/*
 	 * Pre: numero de jugador debe ser entero mayor a 0
@@ -42,12 +44,6 @@ public:
 	 * Pos: devuelve el numero de jugador
 	 */
     int devolverJugadorId();
-    /*	<---------------Borrar Funcion no declarada en Jugador.cpp----------
-     * Pre:
-     * Pos:
-     *
-    void inicializarTesoros(int cantidadDeTesoros);
-	<---------------Borrar Funcion no declarada en Jugador.cpp----------*/
     /*
      * Pre:
      * Pos: Devuelve el estado del jugador
@@ -63,6 +59,28 @@ public:
      * Pos: Agrega una carta a la lista de cartas del jugador
      */
     void obtenerCarta(Mazo* mazo);
+
+    //_____________________________________________________FUNCIONES PARA CUANDO PIERDE UN TURNO
+    /*
+     * Pre:
+     * Pos: coloca en 2 la cantidad de turnos que pierde el jugador
+     */
+    void setPierdeTurno();
+
+    /*/
+     * Pre:
+     * Pos: Devuelve la cantidad de turnos perdidos
+     */
+    int getPierdeTurno();
+
+    /*
+     * Pre:
+     * Pos: resta la cantidad de turnos que el jugador no puede jugar
+     */
+    void restarPierdeTurno();
+    //_____________________________________________________FUNCIONES PARA CUANDO PIERDE UN TURNO
+
+
     /*
      * Pre:
      * Pos: Destruye el jugador
