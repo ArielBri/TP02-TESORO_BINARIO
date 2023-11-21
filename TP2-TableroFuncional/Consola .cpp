@@ -1,12 +1,8 @@
 #include "Consola .h"
 
 unsigned int Consola::coordenadaValida(unsigned int longitud, std::string dimension, unsigned int londitudMaximaDeLaDimension){
-	/*if (longitud <1 || longitud > londitudMaximaDeLaDimension){
-		return false
-	}
-	return true;*/
 	while(longitud <1 || longitud > londitudMaximaDeLaDimension){
-		std::cout<<"El "<< dimension<<" debe estar entre 1 y "<<londitudMaximaDeLaDimension<<"\nIngrese Ancho: ";
+		std::cout<<"El "<< dimension<<" debe estar entre 1 y "<<londitudMaximaDeLaDimension<<"\nIngrese "<<dimension<<": ";
 		std::cin>>longitud;
 	}
 	return longitud;
@@ -26,7 +22,7 @@ bool Consola::quiereEjecutarAccion(std::string accion){
 }
 
 
-Consola::Consola(unsigned int ancho, unsigned int alto, unsigned int largo) {//Funcion modificada
+Consola::Consola(unsigned int ancho, unsigned int alto, unsigned int largo) {
 	this->anchoTablero=ancho;
 	this->altoTablero=alto;
 	this->largoTablero=largo;
@@ -88,27 +84,15 @@ Coordenada *Consola::pedirCoordenada(std::string motivo) {
     std::cout<<"Ingrese Ancho: ";
     std::cin>>ancho;
     ancho = coordenadaValida(ancho,"ancho",this->anchoTablero);
-    /*while(!coordenadaValida(ancho,this->anchoTablero)){
-    	imprimirTexto("El ancho debe estar entre 1 y ");
-    	std::cout<<this->anchoTablero<<"\nIngrese Ancho: ";
-		std::cin>>ancho;
-    }*/
+
     std::cout<<"Ingrese Alto: ";
     std::cin>>alto;
     alto = coordenadaValida(alto,"alto",this->altoTablero);
-    /*while(!coordenadaValida(alto,this->altoTablero)){
-    	imprimirTexto("El alto debe estar entre 1 y ");
-    	std::cout<<this->altoTablero<<"\nIngrese Alto: ";
-		std::cin>>alto;
-    }*/
+
     std::cout<<"Ingrese Largo: ";
     std::cin>>largo;
-    largo = coordenadaValida(largo,"largoo",this->largoTablero);
-    /*while(!coordenadaValida(largo,this->largoTablero)){
-    	imprimirTexto("El largo debe estar entre 1 y ");
-    	std::cout<<this->largoTablero<<"\nIngrese Largo: ";
-		std::cin>>largo;
-    }*/
+    largo = coordenadaValida(largo,"largo",this->largoTablero);
+
     coordenada = new Coordenada(ancho, alto, largo);
     return coordenada;
 
@@ -168,7 +152,7 @@ void Consola::mostrarEspiasDelJugador(Jugador *jugador) {
 }
 
 void Consola::tesoroEnLaCoordenada(int x, int y, int z){
-    std::cout<<"Hay un tesoro en la coordenada: "<<x<<","<<y<<","<<z<<","<<std::endl;
+    std::cout<<"Hay un tesoro en la coordenada: ("<<x<<","<<y<<","<<z<<")"<<std::endl;
 }
 
 void Consola::cantidadDeCartasQueSeAgregaron(int cantidad){
@@ -182,4 +166,3 @@ void Consola::imprimirIdJugadorTurno(int idJugador){
 Consola::~Consola() {
 
 }
-
