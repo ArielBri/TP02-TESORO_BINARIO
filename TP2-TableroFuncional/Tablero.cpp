@@ -1,5 +1,5 @@
 #include "Tablero.h"
-#include <iostream> //para debug
+#include <iostream> 
 
 
 // ANCHO = X, ALTO = Y, LARGO = Z
@@ -18,7 +18,6 @@ Tablero::Tablero(unsigned int ancho, unsigned int alto, unsigned int largo) {
             for( int z = 0; z < largo; z++) {
                 Casillero* casillero = new Casillero();
                 columna->agregar(casillero);
-                std::cout<<"El estado del casillero es:"<<casillero->getEstado()<<std::endl;//para debug
             }
             fila->agregar(columna);
         }
@@ -61,7 +60,6 @@ void Tablero::validarCoordenadas(unsigned int anchoIngresado, unsigned int altoI
     // ver bien que deben cumplir los parametros.
 }
 
-
 bool Tablero::coordenadaDentroDelTablero(unsigned int anchoIngresado, unsigned int altoIngresado,
                                          unsigned int largoIngresado) {
     if (anchoIngresado < 1 || anchoIngresado > this->getAncho() || altoIngresado < 1 || altoIngresado > this->getAlto()
@@ -70,8 +68,6 @@ bool Tablero::coordenadaDentroDelTablero(unsigned int anchoIngresado, unsigned i
     }
     return true;
 }
-
-
 
 Tablero::~Tablero() {
     this->casilleros->iniciarCursor();
@@ -90,5 +86,3 @@ Tablero::~Tablero() {
     }
     delete this->casilleros;
 }
-
-
