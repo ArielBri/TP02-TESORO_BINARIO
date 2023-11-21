@@ -148,7 +148,7 @@ void Bitmap::pintar(bitmap_image &image, unsigned int ejeVista, Casillero* casil
     if (longituXCasilla < 1 || longitudYCasilla < 1) {
         throw "El numero de longitud horizontal y vertical en la casilla debe ser mayor a 0";
     }
-    //Agrego la condicion para vacio
+    
     if ((casillero->getEstado() == Vacio || casillero->getEstado() == Ocupado) && ejeVista == 2){
     	this->pintarFondoCasilla(image, numeroCasillaHorizontalEnImagen, numeroCasillaVerticalEnImagen, 236, 226, 198, longituXCasilla, longitudYCasilla);
     }
@@ -170,4 +170,3 @@ void Bitmap::pintar(bitmap_image &image, unsigned int ejeVista, Casillero* casil
     	}
     }
   }
-
