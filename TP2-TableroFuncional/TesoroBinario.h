@@ -8,23 +8,15 @@
 #include <string>
 
 
-
-enum TipoTurno{
-    Invalido,
-    Valido
-};
-
-
 class TesoroBinario {
 private:
     Tablero * tablero;
-    Vector<Jugador*>*  vectorDeJugadores; // [*Jugador1, *Jugador2,..., *JugadorN]
+    Vector<Jugador*>*  vectorDeJugadores;
     Jugador * jugadorActual;
     Consola * consola;
     Mazo * mazo;
     Bitmap* bitmap;
 
-    TipoTurno turnoValido;
     int cantidadDeJugadores;
     int cantidadDeTesorosInicial;
 
@@ -155,13 +147,7 @@ public:
      * Pos: Notifica al jugador que perdio su tesoro por moverlo a un casillero Inactivo
      */
     void metodoMoverTesoroCasilleroInactivo(Coordenada* coordenadaNueva);
-    /*
-    * Pre:
-    * Pos: El tesoro fue movido a un casillero ocuapado, evalua que hacer y modifica el contenido del casillero e infoma que paso con el tesoro
-    */
-    void metodoMoverTesoroCasilleroOcupado(Coordenada* coordenadaActual,Coordenada *coordenadaNueva,
-                                           Casillero* casilleroActual,Casillero* casilleroNuevo);
-    /*
+   /*
     * Pre:
     * Pos: Mueve el tesoro al casillero nuevo y libera el casillero actual
     */
@@ -201,6 +187,3 @@ public:
 
 
 #endif
-
- 
-  
