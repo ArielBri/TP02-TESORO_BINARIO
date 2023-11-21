@@ -8,17 +8,14 @@ TesoroBinario::TesoroBinario(int ancho, int alto, int largo, int cantidadDeJugad
     for (int i = 1; i <= cantidadDeJugadores; i++) {
          Jugador* jugador = new Jugador(i);
          this->vectorDeJugadores->agregar(i, jugador);
-         //std::cout<<"Jugador creado: "<<this->vectorDeJugadores->obtener(i)->devolverJugadorId()<<std::endl;
+
      }
     this->cantidadDeTesorosInicial = cantidadDeTesoros;
     this->jugadorActual = NULL;
     this->mazo = new Mazo();
-    this->turnoValido = Valido;
     this->cantidadDeJugadores = cantidadDeJugadores;
-    this->consola = new Consola(ancho,alto,largo); //Se modifica para consola
+    this->consola = new Consola(ancho,alto,largo);
     this->bitmap = new Bitmap();
-    /*std::cout<<"Se ejecuta tablero vacio"<<std::endl;
-    this->bitmap->mostrarTablero(this->tablero,this->jugadorActual);//usado para debug*/
 }
 
 
@@ -103,9 +100,6 @@ void TesoroBinario::limpiarCasillerosQueContenganLasFichasDelJugador(Lista<Ficha
     }
 }
 
-
-
-
 void TesoroBinario::borrarJugadoresQuePerdieron(){
 
     for(int i = 1; i<=this->cantidadDeJugadores; i++){
@@ -126,11 +120,10 @@ void TesoroBinario::jugar(){
     while(!this->hayGanador()){
         int posicion = 1;
         while(!this->hayGanador() && posicion <= this->cantidadDeJugadores){
-
-            this->turnoValido = Valido;
             this->jugadorActual = this->vectorDeJugadores->obtener(posicion);
             this->bitmap->mostrarTablero(this->tablero,this->jugadorActual);
-            if(this->jugadorActual->getEstadoJugador()==Activo){
+            this->jugadorActual->restarPierdeTurno();
+            if(this->jugadorActual->getEstadoJugador()==Activo && this->jugadorActual->getPierdeTurno()==0){
                 this->ejecutarTurno();
             }
             this->borrarJugadoresQuePerdieron();
@@ -144,13 +137,11 @@ void TesoroBinario::jugar(){
 
 void TesoroBinario::inicializarTesoros(int cantidadDeTesorosPorJugador, Jugador* jugador){
     int limite = (this->cantidadDeTesorosInicial*this->cantidadDeJugadores)/2;
-	std::cout<<"Tesoros del Jugador: "<<jugador->devolverJugadorId()<<std::endl; //debug
     for(int i=1; i<=cantidadDeTesorosPorJugador; i++){
         Coordenada* coordenadaTesoro = new Coordenada(i,1+(rand()%limite),jugador->devolverJugadorId());
         Ficha* tesoro = new Ficha(Tesoro, jugador->devolverJugadorId(), coordenadaTesoro);
         jugador->obtenerFichasDelJugador()->agregar(tesoro);
         this->colocarFicha(tesoro);
-        std::cout<<"Tesoro"<<i<<"\nCoordenadas:"<<coordenadaTesoro->getAncho()<<coordenadaTesoro->getAlto()<<coordenadaTesoro->getLargo()<<std::endl;//debug
     }
 }
 
@@ -287,19 +278,18 @@ void TesoroBinario::eliminarFichaDeLaListaDeFichasDelJugador(Ficha* ficha) {
 
 void TesoroBinario::metodoTesoroMinaOcupado(Casillero* casillero){
     this->eliminarFichaDeLaListaDeFichasDelJugador(casillero->getFicha());
-    casillero->setEstado(Inactivo);
-    casillero->setTurnosRestantesInactivo(5);
     if(casillero->getFicha()->getTipo()==TesoroMina){
-        this->turnoValido  = Invalido;
+        this->jugadorActual->setPierdeTurno();
     }
     delete casillero->getFicha();
     casillero->setFicha(NULL);
+    casillero->setEstado(Inactivo);
 
 }
 
 
 void TesoroBinario::metodoTesoroMina() {
-    if(this->consola->quiereEjecutarAccion("Quiere poner un TesoroMina?") && this->turnoValido==Valido){
+    if(this->consola->quiereEjecutarAccion("Quiere poner un TesoroMina?")){
         Coordenada* coordenada;
         Casillero* casillero;
         coordenada = this->consola->pedirCoordenada("poner un TesoroMina");
@@ -310,11 +300,13 @@ void TesoroBinario::metodoTesoroMina() {
             if(casillero->getEstado()==Ocupado){
                 this->metodoTesoroMinaOcupado(casillero);
                 delete tesoroMina;
-            } else {
+            }
+            else {
                 this->colocarFicha(tesoroMina);
                 this->jugadorActual->obtenerFichasDelJugador()->agregar(tesoroMina);
             }
-        } else {
+        }
+        else {
             this->consola->imprimirTexto("perdiste la ficha porque el casillero estaba inactivo");
             delete coordenada;
         }
@@ -324,14 +316,18 @@ void TesoroBinario::metodoTesoroMina() {
 
 
 void TesoroBinario::metodoEspiaChoque(Casillero *casillero, TipoFicha ficha) {
-    this->eliminarFichaDeLaListaDeFichasDelJugador(casillero->getFicha());
+	if (ficha!=TesoroBlindado){
+    	this->eliminarFichaDeLaListaDeFichasDelJugador(casillero->getFicha());
+    	delete casillero->getFicha();
+		casillero->setFicha(NULL);
+	}
     switch (ficha) {
         case Tesoro:
             this->consola->imprimirTexto("El espia encontro un teosoro y lo va a capturar");
             break;
         case TesoroMina:
             casillero->setEstado(Inactivo);
-            this->turnoValido = Invalido;
+            this->jugadorActual->setPierdeTurno();
             this->consola->imprimirTexto("El espia se encontro con una mina, se eliminaron ambos y el jugador actual pierde el turno");
             break;
         case Espia:
@@ -341,8 +337,6 @@ void TesoroBinario::metodoEspiaChoque(Casillero *casillero, TipoFicha ficha) {
             this->consola->imprimirTexto("El espia encontro un teosoro blindado y murio");
             break;
     }
-    delete casillero->getFicha();
-    casillero->setFicha(NULL);
 }
 
 void TesoroBinario::metodoEspiasChoqueCasilleroNoInactivo(Casillero* casillero, Coordenada* coordenada){
@@ -351,14 +345,15 @@ void TesoroBinario::metodoEspiasChoqueCasilleroNoInactivo(Casillero* casillero, 
     if(casillero->getEstado()==Ocupado){
         this->metodoEspiaChoque(casillero, casillero->getFicha()->getTipo());
         delete espia;
-    } else {
+    }
+    else {
         this->colocarFicha(espia);
         this->jugadorActual->obtenerFichasDelJugador()->agregar(espia);
     }
 }
 
 void TesoroBinario::metodoEspias() {
-    if(this->consola->quiereEjecutarAccion("Quiere poner un espia?") && this->turnoValido==Valido){
+    if(this->consola->quiereEjecutarAccion("Quiere poner un espia?")){
         Coordenada* coordenada;
         Casillero* casillero;
         coordenada = this->consola->pedirCoordenada("poner un espia");
@@ -367,7 +362,7 @@ void TesoroBinario::metodoEspias() {
             this->metodoEspiasChoqueCasilleroNoInactivo(casillero, coordenada);
             return;
         }
-        this->consola->imprimirTexto("perdiste la ficha porque el casillero estaba inactivo");
+        this->consola->imprimirTexto("Perdiste la ficha porque el casillero estaba inactivo");
 
     }
 
@@ -387,7 +382,7 @@ void TesoroBinario::anunciarGanador() {
 
 void TesoroBinario::metodoMoverTesoroCasilleroInactivo(Coordenada* coordenadaNueva){
     this->consola->imprimirTexto(
-            "perdiste la opcion de mover el tesoro porque el casillero estaba inactivo");
+            "Perdiste la opcion de mover el tesoro porque el casillero estaba inactivo");
     delete coordenadaNueva;
 }
 
@@ -397,38 +392,33 @@ void TesoroBinario::metodoChoqueTesoro(Coordenada* coordenadaActual,Coordenada *
     Ficha* fichaActual = casilleroActual->getFicha();
     TipoFicha tipo = fichaCasilleroNuevo->getTipo();
     if(tipo == Tesoro || tipo == TesoroBlindado){
+    	std::cout<<"En el casillero de destino"<<std::endl;//debug
         this->consola->tesoroEnLaCoordenada(coordenadaNueva->getAncho(), coordenadaNueva->getAlto(),
                                             coordenadaNueva->getLargo());
-    }else if(tipo==Espia||tipo==TesoroMina){
-            this->eliminarFichaDeLaListaDeFichasDelJugador(fichaActual);
-            this->eliminarFichaDeLaListaDeFichasDelJugador(fichaCasilleroNuevo);
-            casilleroActual->setFicha(NULL);
-            casilleroNuevo->setFicha(NULL);
-            casilleroNuevo->setEstado(Inactivo);
-            delete fichaCasilleroNuevo;
-            delete fichaActual;
+    	std::cout<<"Se pierde la posibilidad de mover el tesoro."<<std::endl;//debug
     }
-    delete coordenadaNueva;
-    delete coordenadaActual;
+    else if(tipo==Espia||tipo==TesoroMina){
+    	std::cout<<"El casillero nuevo tiene un espia o tesoro mina"<<std::endl;//debug
+    	if (tipo==TesoroMina){
+    		this->jugadorActual->setPierdeTurno();
+    	}
+		this->eliminarFichaDeLaListaDeFichasDelJugador(fichaActual);
+		this->eliminarFichaDeLaListaDeFichasDelJugador(fichaCasilleroNuevo);
+		casilleroActual->setFicha(NULL);
+		casilleroNuevo->setFicha(NULL);
+		casilleroNuevo->setEstado(Inactivo);
+		delete fichaCasilleroNuevo;
+		delete fichaActual;
+    }
+    /*delete coordenadaNueva; Se eliminan desde la funcion que las crea?
+    delete coordenadaActual;*/
+    /*delete fichaCasilleroNuevo;
+	delete fichaActual;*/
 };
-
-
-
-void TesoroBinario::metodoMoverTesoroCasilleroOcupado(Coordenada* coordenadaActual,Coordenada *coordenadaNueva,
-                                                      Casillero* casilleroActual,Casillero* casilleroNuevo) {
-    coordenadaActual = this->consola->pedirCoordenada("elegir el tesoro a mover(no se puede mover Tesoro blindado)");
-    casilleroActual = this->tablero->getCasillero(coordenadaActual);
-    if (casilleroActual->getEstado() == Ocupado && casilleroActual->getFicha()->getTipo() == Tesoro) {
-
-    }
-}
-
 
 void TesoroBinario::metodoMoverTesoroCasilleroVacio(Coordenada* coordenadaActual,Coordenada *coordenadaNueva,
                                                     Casillero* casilleroActual,Casillero* casilleroNuevo) {
     Ficha *fichaActual;
-    coordenadaActual = this->consola->pedirCoordenada("elegir el tesoro a mover(no se puede mover Tesoro blindado)");
-    casilleroActual = this->tablero->getCasillero(coordenadaActual);
     if (casilleroActual->getEstado() == Ocupado && casilleroActual->getFicha()->getTipo()==Tesoro){
         fichaActual = casilleroActual->getFicha();
         casilleroActual->setFicha(NULL);
@@ -437,13 +427,28 @@ void TesoroBinario::metodoMoverTesoroCasilleroVacio(Coordenada* coordenadaActual
         return;
     }
     this->consola->imprimirTexto("No hay un tesoro en esta coordenada");
+
 }
 
 
 
 void TesoroBinario::subMetodoMoverTesoro(Casillero* casilleroNuevo, Coordenada* coordenadaNueva){
-    Coordenada* coordenadaActual;
+    int indiceTesoro=1;
+	Lista<Ficha*>* fichasJugador = jugadorActual->obtenerFichasDelJugador();
+	Ficha* fichaJugador;
+	Coordenada* coordenadaActual;
     Casillero* casilleroActual;
+    fichasJugador->iniciarCursor();
+    while (fichasJugador->avanzarCursor()){
+    	fichaJugador = fichasJugador->obtenerCursor();
+    	if (fichaJugador->getTipo()==Tesoro){
+    		std::cout<<"Tesoro "<<indiceTesoro<<" en las coordenadas: ("<<fichaJugador->getCoordenada()->getAncho()<<", "<<fichaJugador->getCoordenada()->getAlto()<<", "<<fichaJugador->getCoordenada()->getLargo()<<")"<<std::endl;
+    		indiceTesoro++;
+    	}
+    }
+    coordenadaActual = this->consola->pedirCoordenada("elegir el tesoro a mover.");
+    casilleroActual = this->tablero->getCasillero(coordenadaActual);
+
     switch (casilleroNuevo->getEstado()) {
         case Inactivo:
             this->metodoMoverTesoroCasilleroInactivo(coordenadaNueva);
@@ -452,13 +457,17 @@ void TesoroBinario::subMetodoMoverTesoro(Casillero* casilleroNuevo, Coordenada* 
             this->metodoMoverTesoroCasilleroVacio(coordenadaActual, coordenadaNueva,casilleroActual, casilleroNuevo);
             break;
         case Ocupado:
-            this->metodoMoverTesoroCasilleroOcupado(coordenadaActual, coordenadaNueva, casilleroActual, casilleroNuevo);
+            this->metodoChoqueTesoro(coordenadaActual, coordenadaNueva, casilleroActual, casilleroNuevo);
             break;
     }
+    /*delete casilleroActual;//Se tiene que liberar?
+    delete coordenadaActual;
+    delete fichaJugador;
+    delete fichasJugador;*/
 }
 
 void TesoroBinario::metodoMoverTesoro() {
-    if(this->consola->quiereEjecutarAccion("Quiere mover un tesoro de lugar?") && this->turnoValido==Valido){
+    if(this->consola->quiereEjecutarAccion("Quiere mover un tesoro de lugar?")){
         Coordenada* coordenadaNueva;
         Casillero* casilleroNuevo;
         coordenadaNueva = this->consola->pedirCoordenada("colocar Tesoro");
@@ -487,11 +496,8 @@ void TesoroBinario::actualizarTablero() {
                 }
             }
         }
-
     }
-
 }
-
 
 TesoroBinario::~TesoroBinario(){
     for(int i=1; i<=this->cantidadDeJugadores;i++){
