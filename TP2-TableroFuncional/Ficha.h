@@ -68,7 +68,7 @@ public:
 
     /**
      * pre:
-     * pos: restar la cantiddad de turnos que el tesoro este blindado, si es un teosoro blindado 
+     * pos: restar la cantidad de turnos que el tesoro este blindado, si es un teosoro blindado
      */
     void restarContadorDeBlindaje();
     /**
