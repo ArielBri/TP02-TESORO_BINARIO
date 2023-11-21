@@ -8,8 +8,25 @@ Jugador::Jugador(int numeroDeJugador){
     this->fichas = new Lista<Ficha*>();
     this->idJugador=numeroDeJugador;
     this->cartasDelJugador= new Lista<Carta*>();
+    this->pierdeTurno = 0;
 }
 
+//_____________________________________________________FUNCIONES PARA CUANDO PIERDE UN TURNO
+
+void Jugador::setPierdeTurno(){
+	this->pierdeTurno=2;
+}
+
+int Jugador::getPierdeTurno(){
+	return this->pierdeTurno;
+}
+
+void Jugador::restarPierdeTurno(){
+	if(this->pierdeTurno>0){
+		this->pierdeTurno--;
+	}
+}
+//_____________________________________________________FUNCIONES PARA CUANDO PIERDE UN TURNO
 
 int Jugador::devolverCantidadDeTesoros(){
     this->fichas->iniciarCursor();
@@ -67,4 +84,3 @@ Jugador::~Jugador(){
 void Jugador::setEstadoJugador(EstadoJugador estadoJugador) {
     this->estado = estadoJugador;
 }
-
