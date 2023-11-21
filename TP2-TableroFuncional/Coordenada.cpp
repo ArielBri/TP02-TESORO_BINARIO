@@ -7,7 +7,6 @@
     setLargo(largo);
 }
 
-
 int Coordenada::getAncho(){
     return this->ancho;
 }
