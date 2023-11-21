@@ -8,7 +8,7 @@
 #include "Jugador .h"
 
 class Consola {
-private: //FUNCION AGREGADA
+private: 
 	unsigned int anchoTablero;
 	unsigned int altoTablero;
 	unsigned int largoTablero;
@@ -85,6 +85,5 @@ public:
      */
     virtual ~Consola();
 };
-
 
 #endif
