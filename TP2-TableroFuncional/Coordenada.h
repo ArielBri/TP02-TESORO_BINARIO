@@ -1,4 +1,3 @@
-
 #ifndef TP_2_COORDENADA_H
 #define TP_2_COORDENADA_H
 
