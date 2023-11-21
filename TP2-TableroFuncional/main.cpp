@@ -58,6 +58,5 @@ int solicitarCantidadDeJugadores() {
 	    tesoro = new TesoroBinario(ancho, alto, largo, cantidadJugadores, cantidadDeTesoros);
 	    tesoro->jugar();
 	    delete tesoro;
-		  std::cout<<0;
 	    return 0;
 	}
