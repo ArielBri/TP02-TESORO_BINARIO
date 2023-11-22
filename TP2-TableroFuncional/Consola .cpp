@@ -33,11 +33,11 @@ Consola::Consola(unsigned int ancho, unsigned int alto, unsigned int largo) {
 void Consola::mostrarCartas(Lista<Carta *> *cartasDelJugador) {
     int indice = 1;
     int cartaNumero;
+    std::cout<<"Cartas del mazo del jugador: "<<std::endl;
     cartasDelJugador->iniciarCursor();
     while(cartasDelJugador->avanzarCursor()){
         Carta* carta = cartasDelJugador->obtenerCursor();
         cartaNumero = carta->verCarta();
-    	std::cout<<"Carta del mazo del jugador: "<<cartaNumero<<std::endl; //debug
         std::cout<<indice<<".";
         switch (cartaNumero){
             case 0:
@@ -160,7 +160,7 @@ void Consola::cantidadDeCartasQueSeAgregaron(int cantidad){
 }
 
 void Consola::imprimirIdJugadorTurno(int idJugador){
-    std::cout<<"Es el turno del Jugador: "<<idJugador<<std::endl;
+    std::cout<<"\nEs el turno del Jugador: "<<idJugador<<std::endl;
 }
 
 Consola::~Consola() {
