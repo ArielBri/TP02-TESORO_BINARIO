@@ -16,7 +16,7 @@ private:
     Lista<Ficha*>* fichas;
     EstadoJugador estado;
 
-    int pierdeTurno=0;
+    int pierdeTurno;
 
 public:
 	/*
