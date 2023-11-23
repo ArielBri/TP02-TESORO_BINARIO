@@ -5,9 +5,6 @@
 #include <cstdlib>
 
 
-//const int CANTIDAD_DE_CARTAS_INICIAL=3;
-
-
 class Mazo {
 private:
     int valor;
