@@ -17,7 +17,7 @@ void Bitmap::pintarFondoCasilla(bitmap_image &image, unsigned int numeroCasillaH
         for (unsigned int a = 0; a < longitudYCasilla; a++) {
             image.set_pixel((numeroCasillaHorizontal-1)*longituXCasilla+b, (numeroCasillaVertical-1)*longitudYCasilla+a, rojo, azul, verde);
 
-            if (a == longitudYCasilla-1) {//<--------------------------------------------------------------------------------originalmente en 0, 0, 0
+            if (a == longitudYCasilla-1) {
                 image.set_pixel((numeroCasillaHorizontal-1)*longituXCasilla+b, (numeroCasillaVertical-1)*longitudYCasilla+a, 0, 0, 0);
             }
             if (b == longituXCasilla-1) {
@@ -148,7 +148,6 @@ void Bitmap::pintar(bitmap_image &image, unsigned int ejeVista, Casillero* casil
     if (longituXCasilla < 1 || longitudYCasilla < 1) {
         throw "El numero de longitud horizontal y vertical en la casilla debe ser mayor a 0";
     }
-    
     if ((casillero->getEstado() == Vacio || casillero->getEstado() == Ocupado) && ejeVista == 2){
     	this->pintarFondoCasilla(image, numeroCasillaHorizontalEnImagen, numeroCasillaVerticalEnImagen, 236, 226, 198, longituXCasilla, longitudYCasilla);
     }
