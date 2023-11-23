@@ -1,8 +1,10 @@
 #include "Mazo .h"
 
+
 Mazo::Mazo() {
     this->valor = 3;
 }
+
 
 Carta* Mazo::obtenerCarta() {
     TipoCarta tipo;
