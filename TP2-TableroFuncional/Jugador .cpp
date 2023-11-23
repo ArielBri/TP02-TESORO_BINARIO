@@ -11,8 +11,6 @@ Jugador::Jugador(int numeroDeJugador){
     this->pierdeTurno = 0;
 }
 
-//_____________________________________________________FUNCIONES PARA CUANDO PIERDE UN TURNO
-
 void Jugador::setPierdeTurno(){
 	this->pierdeTurno=2;
 }
@@ -26,7 +24,6 @@ void Jugador::restarPierdeTurno(){
 		this->pierdeTurno--;
 	}
 }
-//_____________________________________________________FUNCIONES PARA CUANDO PIERDE UN TURNO
 
 int Jugador::devolverCantidadDeTesoros(){
     this->fichas->iniciarCursor();
