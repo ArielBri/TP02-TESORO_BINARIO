@@ -10,10 +10,10 @@ private:
     unsigned int alto;
     unsigned int largo;
 public:
-    /**
-    pre: las dimensiones deber ser iguales o mayor a 0
-    pos: deja un tablero creado de las dimensiones dadas con todos los casillas vacias
-    */
+    /*
+     * pre: las dimensiones deber ser iguales o mayor a 0
+     * pos: deja un tablero creado de las dimensiones dadas con todos los casillas vacias
+     */
     Tablero(unsigned int ancho, unsigned int alto, unsigned int largo);
 
     /*
