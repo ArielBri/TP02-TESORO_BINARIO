@@ -1,5 +1,5 @@
 #include "Tablero.h"
-#include <iostream> 
+#include <iostream>
 
 
 // ANCHO = X, ALTO = Y, LARGO = Z
@@ -11,11 +11,11 @@ Tablero::Tablero(unsigned int ancho, unsigned int alto, unsigned int largo) {
     this->alto = alto;
     this->largo = largo;
 
-    for( int i= 0; i < ancho; i++){
+    for(unsigned int i= 0; i < ancho; i++){
         Lista<Lista<Casillero *> *>* fila = new Lista<Lista<Casillero *>*>();
-        for( int j = 0; j < alto; j++) {
+        for(unsigned int j = 0; j < alto; j++) {
             Lista<Casillero *> * columna = new Lista<Casillero *>();
-            for( int z = 0; z < largo; z++) {
+            for(unsigned int z = 0; z < largo; z++) {
                 Casillero* casillero = new Casillero();
                 columna->agregar(casillero);
             }
