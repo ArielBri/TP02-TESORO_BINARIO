@@ -81,7 +81,7 @@ void TesoroBinario::usarCarta(Carta* carta){
             this->jugarEspias2();
             break;
         default:
-            throw "No se encontrÃ³ una carta";
+            throw "No se encontro la carta";
     }
     delete carta;
 
@@ -195,9 +195,9 @@ void TesoroBinario::partirTesoro() {
     ancho = this->tablero->getAncho();
     alto =  this->tablero->getAlto();
     largo = this->tablero->getLargo();
-    for(int x=1; x<=ancho; x++){
-        for(int y=1; y<=alto; y++){
-            for(int z=1; z<=largo; z++){
+    for(unsigned int x=1; x<=ancho; x++){
+        for(unsigned int y=1; y<=alto; y++){
+            for(unsigned int z=1; z<=largo; z++){
                 Casillero* casillero = this->tablero->getCasillero(x,y,z);
                 if(casillero->getEstado()==Vacio){
                     coordenada = new Coordenada(x,y,z);
