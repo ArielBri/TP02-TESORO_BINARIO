@@ -85,7 +85,7 @@ void Bitmap::dibujarObjeto(bitmap_image &imagen, unsigned int numeroCasillaHoriz
 }
 
 void Bitmap::crearImagenesTablero(Tablero* tablero,Jugador*jugador) {
-    cout << "Creando imagenes..." << endl;
+    cout << "\nCreando imagenes..." << endl;
     bitmap_image imageXY(1920, 1080);
     bitmap_image imageXZ(1920, 1080);
     bitmap_image imageYZ(1920, 1080);
@@ -151,7 +151,7 @@ void Bitmap::pintar(bitmap_image &image, unsigned int ejeVista, Casillero* casil
     if ((casillero->getEstado() == Vacio || casillero->getEstado() == Ocupado) && ejeVista == 2){
     	this->pintarFondoCasilla(image, numeroCasillaHorizontalEnImagen, numeroCasillaVerticalEnImagen, 236, 226, 198, longituXCasilla, longitudYCasilla);
     }
-    else if (casillero->getEstado() == Inactivo && ejeVista == 2) {
+    else if (casillero->getEstado() == Inactivo) {
         this->pintarFondoCasilla(image, numeroCasillaHorizontalEnImagen, numeroCasillaVerticalEnImagen, 255, 0, 0, longituXCasilla, longitudYCasilla);
     }
     if(casillero->getFicha()!=NULL){
@@ -168,4 +168,4 @@ void Bitmap::pintar(bitmap_image &image, unsigned int ejeVista, Casillero* casil
         	this->dibujarObjeto(image, numeroCasillaHorizontalEnImagen, numeroCasillaVerticalEnImagen, longituXCasilla, longitudYCasilla, "tesoroblindadopixelss.bmp");
     	}
     }
-  }
+}
