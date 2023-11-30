@@ -53,11 +53,11 @@ Lista<Lista<Lista<Casillero *> *> *> * Tablero::getCasilleros(){
 }
 
 void Tablero::validarCoordenadas(unsigned int anchoIngresado, unsigned int altoIngresado, unsigned int largoIngresado){
-    // Tienen un minimo
+
     if(anchoIngresado < 1||altoIngresado < 1||largoIngresado < 1){
         throw "Los parametros deben ser mayor a 0";
     }
-    // ver bien que deben cumplir los parametros.
+
 }
 
 bool Tablero::coordenadaDentroDelTablero(unsigned int anchoIngresado, unsigned int altoIngresado,
