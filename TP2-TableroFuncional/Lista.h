@@ -13,10 +13,10 @@
 #include "Nodo.h"
 
 /*
- * Una Lista es una colección dinámica de elementos dispuestos en una secuencia.
+ * Una Lista es una colecciÃ³n dinÃ¡mica de elementos dispuestos en una secuencia.
  *
  * Define operaciones para agregar, remover, acceder y cambiar elementos
- * en cualquier posición.
+ * en cualquier posiciÃ³n.
  *
  * Tiene un cursor que permite recorrer todos los elementos secuencialmente.
  *
@@ -34,7 +34,7 @@ template<class T> class Lista {
     public:
 
         /*
-         * post: Lista vacía.
+         * post: Lista vacÃ­a.
          */
         Lista();
 
@@ -45,7 +45,7 @@ template<class T> class Lista {
         Lista(Lista<T>& otraLista);
 
         /*
-         * post: indica si la Lista tiene algún elemento.
+         * post: indica si la Lista tiene algÃºn elemento.
          */
         bool estaVacia();
 
@@ -55,40 +55,40 @@ template<class T> class Lista {
         unsigned int contarElementos();
 
         /*
-         * post: agrega el elemento al final de la Lista, en la posición:
+         * post: agrega el elemento al final de la Lista, en la posiciÃ³n:
          *       contarElementos() + 1.
          */
         void agregar(T elemento);
 
         /*
-         * pre : posición pertenece al intervalo: [1, contarElementos() + 1]
-         * post: agrega el elemento en la posición indicada.
+         * pre : posiciÃ³n pertenece al intervalo: [1, contarElementos() + 1]
+         * post: agrega el elemento en la posiciÃ³n indicada.
          *
          */
         void agregar(T elemento, unsigned int posicion);
 
         /*
          * post: agrega todos los elementos de otraLista
-         *       a partir de la posición contarElementos() + 1.
+         *       a partir de la posiciÃ³n contarElementos() + 1.
          */
         void agregar(Lista<T> &otraLista);
 
         /*
-         * pre : posición pertenece al intervalo: [1, contarElementos()]
-         * post: devuelve el elemento en la posición indicada.
+         * pre : posiciÃ³n pertenece al intervalo: [1, contarElementos()]
+         * post: devuelve el elemento en la posiciÃ³n indicada.
          */
         T obtener(unsigned int posicion);
 
         /*
-         * pre : posicioó pertenece al intervalo: [1, contarElementos()]
-         * post: cambia el elemento en la posición indicada por el
+         * pre : posicioÃ³ pertenece al intervalo: [1, contarElementos()]
+         * post: cambia el elemento en la posiciÃ³n indicada por el
          *       elemento dado.
          */
         void asignar(T elemento, unsigned int posicion);
 
         /*
-         * pre : posición pertenece al intervalo: [1, contarElementos()]
-         * post: remueve de la Lista el elemento en la posición indicada.
+         * pre : posiciÃ³n pertenece al intervalo: [1, contarElementos()]
+         * post: remueve de la Lista el elemento en la posiciÃ³n indicada.
          */
         void remover(unsigned int posicion);
 
@@ -99,21 +99,21 @@ template<class T> class Lista {
         void iniciarCursor();
 
         /*
-         * pre : se ha iniciado un recorrido (invocando el método
+         * pre : se ha iniciado un recorrido (invocando el mÃ©todo
          *       iniciarCursor()) y desde entonces no se han agregado o
          *       removido elementos de la Lista.
          * post: mueve el cursor y lo posiciona en el siguiente elemento
          *       del recorrido.
-         *       El valor de retorno indica si el cursor quedó posicionado
-         *       sobre un elemento o no (en caso de que la Lista esté vacía o
-         *       no existan más elementos por recorrer.)
+         *       El valor de retorno indica si el cursor quedÃ³ posicionado
+         *       sobre un elemento o no (en caso de que la Lista estÃ© vacÃ­a o
+         *       no existan mÃ¡s elementos por recorrer.)
          */
         bool avanzarCursor();
 
         /*
-         * pre : el cursor está posicionado sobre un elemento de la Lista,
-         *       (fue invocado el método avanzarCursor() y devolvió true)
-         * post: devuelve el elemento en la posición del cursor.
+         * pre : el cursor estÃ¡ posicionado sobre un elemento de la Lista,
+         *       (fue invocado el mÃ©todo avanzarCursor() y devolviÃ³ true)
+         * post: devuelve el elemento en la posiciÃ³n del cursor.
          *
          */
         T obtenerCursor();
@@ -130,8 +130,8 @@ template<class T> class Lista {
     private:
 
         /*
-         * pre : posición pertenece al intervalo: [1, contarElementos()]
-         * post: devuelve el nodo en la posición indicada.
+         * pre : posiciÃ³n pertenece al intervalo: [1, contarElementos()]
+         * post: devuelve el nodo en la posiciÃ³n indicada.
          */
         Nodo<T>* obtenerNodo(unsigned int posicion); // NOTA: primitiva PRIVADA
 };
