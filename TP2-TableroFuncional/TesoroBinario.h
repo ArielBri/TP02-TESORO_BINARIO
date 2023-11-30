@@ -118,7 +118,7 @@ public:
     void metodoTesoroMina();
     /*
      * Pre:
-     * Pos: Mueve el tesoro de casillero o se pierde dependiendo del tipo de ficha que está almacenada en el casillero nuevo  
+     * Pos: Mueve el tesoro de casillero o se pierde dependiendo del tipo de ficha que estÃ¡ almacenada en el casillero nuevo  
      */
     void metodoChoqueTesoro(Coordenada* coordenadaActual,Coordenada *coordenadaNueva, Casillero* casilleroActual,Casillero* casilleroNuevo);
     /*
@@ -155,7 +155,7 @@ public:
                                          Casillero* casilleroActual,Casillero* casilleroNuevo);
     /*
      * Pre: Debe quedar un solo jugador con estado Activo
-     * Pos: Muestra por consola el jugador que ganó el juego
+     * Pos: Muestra por consola el jugador que ganÃ³ el juego
      */
     void anunciarGanador();
     /*
@@ -170,12 +170,12 @@ public:
     void inicializarTesoros(int cantidadDeTesorosPorJugador, Jugador* jugador);
     /*
      * Pre:
-     * Pos: Coloca un espía en un casillero ocupado y avisa por mesaje que sucedio con el espia
+     * Pos: Coloca un espÃ­a en un casillero ocupado y avisa por mesaje que sucedio con el espia
      */
     void metodoEspiaChoque(Casillero *casillero, TipoFicha ficha);
     /*
      * Pre:
-     * Pos: Coloca el espia si el casillero está vacio, si el casillero esta ocupado evalua que paso con el espia y avisa
+     * Pos: Coloca el espia si el casillero estÃ¡ vacio, si el casillero esta ocupado evalua que paso con el espia y avisa
      */
     void metodoEspiasChoqueCasilleroNoInactivo(Casillero* casillero, Coordenada* coordenada);
     /*
