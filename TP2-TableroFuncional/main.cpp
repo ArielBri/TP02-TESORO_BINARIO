@@ -2,7 +2,7 @@
 #include <iostream>
 
 	/*
-	 * Pre: los parámentros deben ser positivos
+	 * Pre: los parÃ¡mentros deben ser positivos
 	 * Pos: Establece las dimensiones que tendra el tablero
 	 */
 	void determinarParametros(int &ancho, int &alto, int &largo, int cantidadDeJugadores, int cantidadDeTesoros){
@@ -50,13 +50,17 @@ int solicitarCantidadDeJugadores() {
 	}
 
 	int main() {
-	    int cantidadJugadores, cantidadDeTesoros, alto, largo, ancho;
-	    TesoroBinario* tesoro;
-	    cantidadJugadores = solicitarCantidadDeJugadores();
-	    cantidadDeTesoros = solicitarCantidadDeTesoros();
-	    determinarParametros(ancho, alto, largo, cantidadJugadores, cantidadDeTesoros);
-	    tesoro = new TesoroBinario(ancho, alto, largo, cantidadJugadores, cantidadDeTesoros);
-	    tesoro->jugar();
-	    delete tesoro;
+		try{
+			int cantidadJugadores, cantidadDeTesoros, alto, largo, ancho;
+			TesoroBinario* tesoro;
+			cantidadJugadores = solicitarCantidadDeJugadores();
+			cantidadDeTesoros = solicitarCantidadDeTesoros();
+			determinarParametros(ancho, alto, largo, cantidadJugadores, cantidadDeTesoros);
+			tesoro = new TesoroBinario(ancho, alto, largo, cantidadJugadores, cantidadDeTesoros);
+			tesoro->jugar();
+			delete tesoro;
+		} catch (const char *error) {
+			cout << error << endl;
+		}
 	    return 0;
 	}
