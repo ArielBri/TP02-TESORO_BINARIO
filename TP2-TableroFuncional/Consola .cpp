@@ -69,7 +69,7 @@ int Consola::pedirAlJugadorElIndiceDeCarta(int cantidadDeCartas) {
     int indice;
     std::cout << " Ingrese el indice de la carta a jugar: ";
     std::cin >> indice;
-    // validar que sea un numero.
+
     while (indice < 1 || indice > cantidadDeCartas) {
         std::cout << "Ingrese el indice de la carta dentro de rango: [1," << cantidadDeCartas << "]" << " a jugar: ";
         std::cin >> indice;
