@@ -36,7 +36,7 @@ public:
     void mostrarCartas(Lista<Carta*>* listaDeCartas);
     /*
      * Pre: El parametro debe ser mayor a 0.
-     * Pos: devuelve el nÃºmero de la carta.
+     * Pos: devuelve el nÃƒÂºmero de la carta.
      */
     int pedirAlJugadorElIndiceDeCarta(int cantidadDeCartas);
     /*
